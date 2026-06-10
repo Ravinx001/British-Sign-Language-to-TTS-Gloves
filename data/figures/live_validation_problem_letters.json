@@ -1,0 +1,1513 @@
+{
+  "summary": {
+    "letters": [
+      "I",
+      "U",
+      "O",
+      "N",
+      "L",
+      "H",
+      "J"
+    ],
+    "reps": 5,
+    "n_trials": 35,
+    "top1_correct": 10,
+    "top3_correct": 19,
+    "top1_accuracy": 0.2857,
+    "top3_accuracy": 0.5429,
+    "raw_top1_accuracy": 0.2857,
+    "targets": {
+      "top1": 0.6,
+      "top3": 0.8
+    },
+    "pass": {
+      "top1": false,
+      "top3": false
+    }
+  },
+  "trials": [
+    {
+      "letter": "I",
+      "rep": 1,
+      "samples": 151,
+      "top1_dominant": "I",
+      "top1_correct": true,
+      "top3_hit_rate": 1.0,
+      "top3_correct": true,
+      "debug": {
+        "emitted_counts": {
+          "I": 151
+        },
+        "route_counts": {
+          "static": 151
+        },
+        "raw_top1_counts": {
+          "I": 151
+        },
+        "raw_top1_dominant": "I",
+        "raw_top1_correct": true,
+        "raw_top1_conf_avg": 0.975,
+        "raw_top1_conf_min": 0.9645,
+        "raw_top1_conf_max": 0.9862,
+        "motion_energy_avg": 10.637,
+        "motion_energy_p95": 10.734,
+        "feature_delta_p95": 0.01,
+        "accel_delta_p95": 0.1738,
+        "dynamic_gate_counts": {},
+        "max_abs_z_avg": 1.8103,
+        "max_abs_z_p95": 1.8157,
+        "high_z_count_avg": 0.0,
+        "top_z_channels": {
+          "L_roll": 151,
+          "R_yaw": 151,
+          "R_roll": 150,
+          "L_fsr_index": 149,
+          "inter_hand_delta_roll": 123,
+          "L_hand_openness": 30,
+          "L_flex_pinky": 1
+        }
+      }
+    },
+    {
+      "letter": "I",
+      "rep": 2,
+      "samples": 151,
+      "top1_dominant": "I",
+      "top1_correct": true,
+      "top3_hit_rate": 1.0,
+      "top3_correct": true,
+      "debug": {
+        "emitted_counts": {
+          "I": 151
+        },
+        "route_counts": {
+          "static": 151
+        },
+        "raw_top1_counts": {
+          "I": 151
+        },
+        "raw_top1_dominant": "I",
+        "raw_top1_correct": true,
+        "raw_top1_conf_avg": 0.9599,
+        "raw_top1_conf_min": 0.9457,
+        "raw_top1_conf_max": 0.9707,
+        "motion_energy_avg": 10.4881,
+        "motion_energy_p95": 10.6135,
+        "feature_delta_p95": 0.009,
+        "accel_delta_p95": 0.1882,
+        "dynamic_gate_counts": {},
+        "max_abs_z_avg": 1.8768,
+        "max_abs_z_p95": 1.8895,
+        "high_z_count_avg": 0.0,
+        "top_z_channels": {
+          "L_roll": 151,
+          "L_fsr_index": 151,
+          "R_yaw": 151,
+          "R_roll": 151,
+          "L_fsr_thumb": 151
+        }
+      }
+    },
+    {
+      "letter": "I",
+      "rep": 3,
+      "samples": 151,
+      "top1_dominant": "I",
+      "top1_correct": true,
+      "top3_hit_rate": 1.0,
+      "top3_correct": true,
+      "debug": {
+        "emitted_counts": {
+          "I": 151
+        },
+        "route_counts": {
+          "static": 151
+        },
+        "raw_top1_counts": {
+          "I": 151
+        },
+        "raw_top1_dominant": "I",
+        "raw_top1_correct": true,
+        "raw_top1_conf_avg": 0.9772,
+        "raw_top1_conf_min": 0.9571,
+        "raw_top1_conf_max": 0.9854,
+        "motion_energy_avg": 11.2113,
+        "motion_energy_p95": 11.352,
+        "feature_delta_p95": 0.0124,
+        "accel_delta_p95": 0.1947,
+        "dynamic_gate_counts": {},
+        "max_abs_z_avg": 1.8089,
+        "max_abs_z_p95": 1.827,
+        "high_z_count_avg": 0.0,
+        "top_z_channels": {
+          "L_roll": 151,
+          "L_fsr_index": 151,
+          "R_roll": 151,
+          "R_yaw": 151,
+          "inter_hand_delta_roll": 151
+        }
+      }
+    },
+    {
+      "letter": "I",
+      "rep": 4,
+      "samples": 151,
+      "top1_dominant": "I",
+      "top1_correct": true,
+      "top3_hit_rate": 1.0,
+      "top3_correct": true,
+      "debug": {
+        "emitted_counts": {
+          "I": 151
+        },
+        "route_counts": {
+          "static": 151
+        },
+        "raw_top1_counts": {
+          "I": 151
+        },
+        "raw_top1_dominant": "I",
+        "raw_top1_correct": true,
+        "raw_top1_conf_avg": 0.9942,
+        "raw_top1_conf_min": 0.9915,
+        "raw_top1_conf_max": 0.9955,
+        "motion_energy_avg": 10.4571,
+        "motion_energy_p95": 10.5615,
+        "feature_delta_p95": 0.009,
+        "accel_delta_p95": 0.2047,
+        "dynamic_gate_counts": {},
+        "max_abs_z_avg": 1.9752,
+        "max_abs_z_p95": 1.9893,
+        "high_z_count_avg": 0.0,
+        "top_z_channels": {
+          "L_roll": 151,
+          "L_fsr_index": 151,
+          "R_yaw": 151,
+          "R_roll": 151,
+          "L_fsr_thumb": 151
+        }
+      }
+    },
+    {
+      "letter": "I",
+      "rep": 5,
+      "samples": 151,
+      "top1_dominant": "I",
+      "top1_correct": true,
+      "top3_hit_rate": 1.0,
+      "top3_correct": true,
+      "debug": {
+        "emitted_counts": {
+          "I": 151
+        },
+        "route_counts": {
+          "static": 151
+        },
+        "raw_top1_counts": {
+          "I": 151
+        },
+        "raw_top1_dominant": "I",
+        "raw_top1_correct": true,
+        "raw_top1_conf_avg": 0.9726,
+        "raw_top1_conf_min": 0.9624,
+        "raw_top1_conf_max": 0.98,
+        "motion_energy_avg": 10.5607,
+        "motion_energy_p95": 10.687,
+        "feature_delta_p95": 0.0103,
+        "accel_delta_p95": 0.1836,
+        "dynamic_gate_counts": {},
+        "max_abs_z_avg": 1.9824,
+        "max_abs_z_p95": 1.9995,
+        "high_z_count_avg": 0.0,
+        "top_z_channels": {
+          "L_roll": 151,
+          "L_fsr_index": 151,
+          "L_fsr_thumb": 151,
+          "R_yaw": 151,
+          "R_roll": 151
+        }
+      }
+    },
+    {
+      "letter": "U",
+      "rep": 1,
+      "samples": 151,
+      "top1_dominant": "I",
+      "top1_correct": false,
+      "top3_hit_rate": 1.0,
+      "top3_correct": true,
+      "debug": {
+        "emitted_counts": {
+          "I": 151
+        },
+        "route_counts": {
+          "static": 151
+        },
+        "raw_top1_counts": {
+          "I": 151
+        },
+        "raw_top1_dominant": "I",
+        "raw_top1_correct": false,
+        "raw_top1_conf_avg": 0.9729,
+        "raw_top1_conf_min": 0.9134,
+        "raw_top1_conf_max": 0.9922,
+        "motion_energy_avg": 9.3727,
+        "motion_energy_p95": 9.575,
+        "feature_delta_p95": 0.0398,
+        "accel_delta_p95": 0.3058,
+        "dynamic_gate_counts": {},
+        "max_abs_z_avg": 1.36,
+        "max_abs_z_p95": 1.4629,
+        "high_z_count_avg": 0.0,
+        "top_z_channels": {
+          "L_roll": 151,
+          "R_yaw": 151,
+          "R_roll": 151,
+          "inter_hand_delta_roll": 151,
+          "inter_hand_delta_pitch": 106,
+          "L_flex_middle": 25,
+          "L_hand_openness": 12,
+          "L_fsr_thumb": 8
+        }
+      }
+    },
+    {
+      "letter": "U",
+      "rep": 2,
+      "samples": 151,
+      "top1_dominant": "I",
+      "top1_correct": false,
+      "top3_hit_rate": 1.0,
+      "top3_correct": true,
+      "debug": {
+        "emitted_counts": {
+          "I": 151
+        },
+        "route_counts": {
+          "static": 151
+        },
+        "raw_top1_counts": {
+          "I": 151
+        },
+        "raw_top1_dominant": "I",
+        "raw_top1_correct": false,
+        "raw_top1_conf_avg": 0.7769,
+        "raw_top1_conf_min": 0.626,
+        "raw_top1_conf_max": 0.8531,
+        "motion_energy_avg": 9.3408,
+        "motion_energy_p95": 10.366,
+        "feature_delta_p95": 0.034,
+        "accel_delta_p95": 0.4298,
+        "dynamic_gate_counts": {},
+        "max_abs_z_avg": 1.4243,
+        "max_abs_z_p95": 1.4484,
+        "high_z_count_avg": 0.0,
+        "top_z_channels": {
+          "L_roll": 151,
+          "R_roll": 151,
+          "inter_hand_delta_roll": 151,
+          "L_fsr_thumb": 151,
+          "R_yaw": 151
+        }
+      }
+    },
+    {
+      "letter": "U",
+      "rep": 3,
+      "samples": 151,
+      "top1_dominant": "I",
+      "top1_correct": false,
+      "top3_hit_rate": 0.8013245033112583,
+      "top3_correct": true,
+      "debug": {
+        "emitted_counts": {
+          "I": 151
+        },
+        "route_counts": {
+          "static": 151
+        },
+        "raw_top1_counts": {
+          "I": 151
+        },
+        "raw_top1_dominant": "I",
+        "raw_top1_correct": false,
+        "raw_top1_conf_avg": 0.8699,
+        "raw_top1_conf_min": 0.5222,
+        "raw_top1_conf_max": 0.9869,
+        "motion_energy_avg": 9.7577,
+        "motion_energy_p95": 10.675,
+        "feature_delta_p95": 0.0701,
+        "accel_delta_p95": 0.312,
+        "dynamic_gate_counts": {},
+        "max_abs_z_avg": 1.27,
+        "max_abs_z_p95": 1.4631,
+        "high_z_count_avg": 0.0,
+        "top_z_channels": {
+          "L_fsr_thumb": 151,
+          "R_yaw": 151,
+          "inter_hand_delta_pitch": 151,
+          "R_roll": 151,
+          "inter_hand_delta_roll": 100,
+          "L_roll": 51
+        }
+      }
+    },
+    {
+      "letter": "U",
+      "rep": 4,
+      "samples": 151,
+      "top1_dominant": "I",
+      "top1_correct": false,
+      "top3_hit_rate": 1.0,
+      "top3_correct": true,
+      "debug": {
+        "emitted_counts": {
+          "I": 151
+        },
+        "route_counts": {
+          "static": 151
+        },
+        "raw_top1_counts": {
+          "I": 151
+        },
+        "raw_top1_dominant": "I",
+        "raw_top1_correct": false,
+        "raw_top1_conf_avg": 0.9224,
+        "raw_top1_conf_min": 0.7911,
+        "raw_top1_conf_max": 0.9777,
+        "motion_energy_avg": 10.5152,
+        "motion_energy_p95": 11.2895,
+        "feature_delta_p95": 0.0324,
+        "accel_delta_p95": 0.3761,
+        "dynamic_gate_counts": {},
+        "max_abs_z_avg": 1.3932,
+        "max_abs_z_p95": 1.4234,
+        "high_z_count_avg": 0.0,
+        "top_z_channels": {
+          "L_roll": 151,
+          "R_roll": 151,
+          "inter_hand_delta_roll": 151,
+          "L_fsr_thumb": 137,
+          "L_fsr_index": 92,
+          "inter_hand_delta_pitch": 73
+        }
+      }
+    },
+    {
+      "letter": "U",
+      "rep": 5,
+      "samples": 151,
+      "top1_dominant": "I",
+      "top1_correct": false,
+      "top3_hit_rate": 1.0,
+      "top3_correct": true,
+      "debug": {
+        "emitted_counts": {
+          "I": 151
+        },
+        "route_counts": {
+          "static": 151
+        },
+        "raw_top1_counts": {
+          "I": 151
+        },
+        "raw_top1_dominant": "I",
+        "raw_top1_correct": false,
+        "raw_top1_conf_avg": 0.9975,
+        "raw_top1_conf_min": 0.9959,
+        "raw_top1_conf_max": 0.9985,
+        "motion_energy_avg": 9.979,
+        "motion_energy_p95": 10.9165,
+        "feature_delta_p95": 0.0428,
+        "accel_delta_p95": 0.4613,
+        "dynamic_gate_counts": {},
+        "max_abs_z_avg": 1.5486,
+        "max_abs_z_p95": 1.6069,
+        "high_z_count_avg": 0.0,
+        "top_z_channels": {
+          "inter_hand_delta_pitch": 151,
+          "L_roll": 151,
+          "R_yaw": 151,
+          "R_roll": 151,
+          "L_fsr_thumb": 75,
+          "inter_hand_delta_roll": 71,
+          "L_fsr_index": 5
+        }
+      }
+    },
+    {
+      "letter": "O",
+      "rep": 1,
+      "samples": 151,
+      "top1_dominant": null,
+      "top1_correct": false,
+      "top3_hit_rate": 0.0,
+      "top3_correct": false,
+      "debug": {
+        "emitted_counts": {
+          "None": 151
+        },
+        "route_counts": {
+          "static": 151
+        },
+        "raw_top1_counts": {
+          "I": 151
+        },
+        "raw_top1_dominant": "I",
+        "raw_top1_correct": false,
+        "raw_top1_conf_avg": 0.3396,
+        "raw_top1_conf_min": 0.2723,
+        "raw_top1_conf_max": 0.3723,
+        "motion_energy_avg": 9.7468,
+        "motion_energy_p95": 9.9425,
+        "feature_delta_p95": 0.0132,
+        "accel_delta_p95": 0.1883,
+        "dynamic_gate_counts": {},
+        "max_abs_z_avg": 1.4215,
+        "max_abs_z_p95": 1.6107,
+        "high_z_count_avg": 0.0,
+        "top_z_channels": {
+          "L_fsr_index": 151,
+          "R_yaw": 151,
+          "inter_hand_delta_pitch": 151,
+          "L_roll": 151,
+          "L_fsr_thumb": 151
+        }
+      }
+    },
+    {
+      "letter": "O",
+      "rep": 2,
+      "samples": 151,
+      "top1_dominant": "I",
+      "top1_correct": false,
+      "top3_hit_rate": 0.0,
+      "top3_correct": false,
+      "debug": {
+        "emitted_counts": {
+          "I": 151
+        },
+        "route_counts": {
+          "static": 151
+        },
+        "raw_top1_counts": {
+          "I": 151
+        },
+        "raw_top1_dominant": "I",
+        "raw_top1_correct": false,
+        "raw_top1_conf_avg": 0.655,
+        "raw_top1_conf_min": 0.5612,
+        "raw_top1_conf_max": 0.8198,
+        "motion_energy_avg": 10.0121,
+        "motion_energy_p95": 10.1265,
+        "feature_delta_p95": 0.0141,
+        "accel_delta_p95": 0.1833,
+        "dynamic_gate_counts": {},
+        "max_abs_z_avg": 1.4764,
+        "max_abs_z_p95": 1.4971,
+        "high_z_count_avg": 0.0,
+        "top_z_channels": {
+          "L_roll": 151,
+          "R_yaw": 151,
+          "inter_hand_delta_pitch": 151,
+          "L_fsr_thumb": 151,
+          "R_roll": 151
+        }
+      }
+    },
+    {
+      "letter": "O",
+      "rep": 3,
+      "samples": 151,
+      "top1_dominant": "I",
+      "top1_correct": false,
+      "top3_hit_rate": 0.0,
+      "top3_correct": false,
+      "debug": {
+        "emitted_counts": {
+          "I": 151
+        },
+        "route_counts": {
+          "static": 151
+        },
+        "raw_top1_counts": {
+          "I": 151
+        },
+        "raw_top1_dominant": "I",
+        "raw_top1_correct": false,
+        "raw_top1_conf_avg": 0.9612,
+        "raw_top1_conf_min": 0.9323,
+        "raw_top1_conf_max": 0.9799,
+        "motion_energy_avg": 9.6987,
+        "motion_energy_p95": 9.8445,
+        "feature_delta_p95": 0.0157,
+        "accel_delta_p95": 0.179,
+        "dynamic_gate_counts": {},
+        "max_abs_z_avg": 1.4691,
+        "max_abs_z_p95": 1.4859,
+        "high_z_count_avg": 0.0,
+        "top_z_channels": {
+          "L_roll": 151,
+          "R_yaw": 151,
+          "R_roll": 151,
+          "L_fsr_thumb": 151,
+          "L_fsr_index": 101,
+          "inter_hand_delta_pitch": 44,
+          "inter_hand_delta_roll": 6
+        }
+      }
+    },
+    {
+      "letter": "O",
+      "rep": 4,
+      "samples": 151,
+      "top1_dominant": "I",
+      "top1_correct": false,
+      "top3_hit_rate": 0.0,
+      "top3_correct": false,
+      "debug": {
+        "emitted_counts": {
+          "I": 86,
+          "None": 65
+        },
+        "route_counts": {
+          "static": 151
+        },
+        "raw_top1_counts": {
+          "I": 90,
+          "Y": 61
+        },
+        "raw_top1_dominant": "I",
+        "raw_top1_correct": false,
+        "raw_top1_conf_avg": 0.5146,
+        "raw_top1_conf_min": 0.1685,
+        "raw_top1_conf_max": 0.9499,
+        "motion_energy_avg": 9.4193,
+        "motion_energy_p95": 9.809,
+        "feature_delta_p95": 0.0471,
+        "accel_delta_p95": 0.2828,
+        "dynamic_gate_counts": {},
+        "max_abs_z_avg": 1.7943,
+        "max_abs_z_p95": 1.8365,
+        "high_z_count_avg": 0.0,
+        "top_z_channels": {
+          "L_roll": 151,
+          "R_yaw": 151,
+          "inter_hand_delta_pitch": 151,
+          "L_fsr_thumb": 135,
+          "R_roll": 115,
+          "L_hand_openness": 35,
+          "L_fsr_index": 16,
+          "R_flex_middle": 1
+        }
+      }
+    },
+    {
+      "letter": "O",
+      "rep": 5,
+      "samples": 151,
+      "top1_dominant": "I",
+      "top1_correct": false,
+      "top3_hit_rate": 0.0,
+      "top3_correct": false,
+      "debug": {
+        "emitted_counts": {
+          "I": 151
+        },
+        "route_counts": {
+          "static": 151
+        },
+        "raw_top1_counts": {
+          "I": 151
+        },
+        "raw_top1_dominant": "I",
+        "raw_top1_correct": false,
+        "raw_top1_conf_avg": 0.9965,
+        "raw_top1_conf_min": 0.9939,
+        "raw_top1_conf_max": 0.998,
+        "motion_energy_avg": 11.2015,
+        "motion_energy_p95": 11.4175,
+        "feature_delta_p95": 0.0214,
+        "accel_delta_p95": 0.338,
+        "dynamic_gate_counts": {},
+        "max_abs_z_avg": 1.7349,
+        "max_abs_z_p95": 1.7734,
+        "high_z_count_avg": 0.0,
+        "top_z_channels": {
+          "inter_hand_delta_pitch": 151,
+          "L_roll": 151,
+          "R_roll": 151,
+          "R_yaw": 151,
+          "L_fsr_thumb": 122,
+          "inter_hand_delta_roll": 29
+        }
+      }
+    },
+    {
+      "letter": "N",
+      "rep": 1,
+      "samples": 151,
+      "top1_dominant": "V",
+      "top1_correct": false,
+      "top3_hit_rate": 0.0,
+      "top3_correct": false,
+      "debug": {
+        "emitted_counts": {
+          "V": 151
+        },
+        "route_counts": {
+          "static": 151
+        },
+        "raw_top1_counts": {
+          "V": 151
+        },
+        "raw_top1_dominant": "V",
+        "raw_top1_correct": false,
+        "raw_top1_conf_avg": 0.9981,
+        "raw_top1_conf_min": 0.9974,
+        "raw_top1_conf_max": 0.9985,
+        "motion_energy_avg": 20.7121,
+        "motion_energy_p95": 20.8595,
+        "feature_delta_p95": 0.0097,
+        "accel_delta_p95": 0.1825,
+        "dynamic_gate_counts": {},
+        "max_abs_z_avg": 1.502,
+        "max_abs_z_p95": 1.5475,
+        "high_z_count_avg": 0.0,
+        "top_z_channels": {
+          "L_flex_middle": 151,
+          "R_roll": 151,
+          "R_yaw": 151,
+          "inter_hand_delta_roll": 151,
+          "L_roll": 151
+        }
+      }
+    },
+    {
+      "letter": "N",
+      "rep": 2,
+      "samples": 151,
+      "top1_dominant": "V",
+      "top1_correct": false,
+      "top3_hit_rate": 0.9536423841059603,
+      "top3_correct": true,
+      "debug": {
+        "emitted_counts": {
+          "V": 151
+        },
+        "route_counts": {
+          "static": 151
+        },
+        "raw_top1_counts": {
+          "V": 151
+        },
+        "raw_top1_dominant": "V",
+        "raw_top1_correct": false,
+        "raw_top1_conf_avg": 0.999,
+        "raw_top1_conf_min": 0.9988,
+        "raw_top1_conf_max": 0.9994,
+        "motion_energy_avg": 20.8284,
+        "motion_energy_p95": 21.091,
+        "feature_delta_p95": 0.0374,
+        "accel_delta_p95": 0.3226,
+        "dynamic_gate_counts": {},
+        "max_abs_z_avg": 1.802,
+        "max_abs_z_p95": 1.8299,
+        "high_z_count_avg": 0.0,
+        "top_z_channels": {
+          "L_flex_middle": 151,
+          "R_roll": 151,
+          "R_yaw": 151,
+          "inter_hand_delta_roll": 151,
+          "L_fsr_thumb": 151
+        }
+      }
+    },
+    {
+      "letter": "N",
+      "rep": 3,
+      "samples": 151,
+      "top1_dominant": "V",
+      "top1_correct": false,
+      "top3_hit_rate": 1.0,
+      "top3_correct": true,
+      "debug": {
+        "emitted_counts": {
+          "V": 151
+        },
+        "route_counts": {
+          "static": 151
+        },
+        "raw_top1_counts": {
+          "V": 151
+        },
+        "raw_top1_dominant": "V",
+        "raw_top1_correct": false,
+        "raw_top1_conf_avg": 0.9492,
+        "raw_top1_conf_min": 0.9306,
+        "raw_top1_conf_max": 0.9717,
+        "motion_energy_avg": 20.6811,
+        "motion_energy_p95": 20.832,
+        "feature_delta_p95": 0.0109,
+        "accel_delta_p95": 0.2009,
+        "dynamic_gate_counts": {},
+        "max_abs_z_avg": 2.1866,
+        "max_abs_z_p95": 2.2087,
+        "high_z_count_avg": 0.0,
+        "top_z_channels": {
+          "L_flex_middle": 151,
+          "R_roll": 151,
+          "R_yaw": 151,
+          "L_fsr_thumb": 151,
+          "inter_hand_delta_roll": 151
+        }
+      }
+    },
+    {
+      "letter": "N",
+      "rep": 4,
+      "samples": 150,
+      "top1_dominant": "V",
+      "top1_correct": false,
+      "top3_hit_rate": 1.0,
+      "top3_correct": true,
+      "debug": {
+        "emitted_counts": {
+          "V": 150
+        },
+        "route_counts": {
+          "static": 150
+        },
+        "raw_top1_counts": {
+          "V": 150
+        },
+        "raw_top1_dominant": "V",
+        "raw_top1_correct": false,
+        "raw_top1_conf_avg": 0.9571,
+        "raw_top1_conf_min": 0.9337,
+        "raw_top1_conf_max": 0.9798,
+        "motion_energy_avg": 20.8127,
+        "motion_energy_p95": 20.9617,
+        "feature_delta_p95": 0.0099,
+        "accel_delta_p95": 0.1683,
+        "dynamic_gate_counts": {},
+        "max_abs_z_avg": 2.1867,
+        "max_abs_z_p95": 2.214,
+        "high_z_count_avg": 0.0,
+        "top_z_channels": {
+          "L_flex_middle": 150,
+          "R_roll": 150,
+          "R_yaw": 150,
+          "inter_hand_delta_pitch": 150,
+          "inter_hand_delta_roll": 150
+        }
+      }
+    },
+    {
+      "letter": "N",
+      "rep": 5,
+      "samples": 151,
+      "top1_dominant": "V",
+      "top1_correct": false,
+      "top3_hit_rate": 1.0,
+      "top3_correct": true,
+      "debug": {
+        "emitted_counts": {
+          "V": 151
+        },
+        "route_counts": {
+          "static": 151
+        },
+        "raw_top1_counts": {
+          "V": 151
+        },
+        "raw_top1_dominant": "V",
+        "raw_top1_correct": false,
+        "raw_top1_conf_avg": 0.9964,
+        "raw_top1_conf_min": 0.9892,
+        "raw_top1_conf_max": 0.9995,
+        "motion_energy_avg": 20.7711,
+        "motion_energy_p95": 21.052,
+        "feature_delta_p95": 0.0343,
+        "accel_delta_p95": 0.263,
+        "dynamic_gate_counts": {},
+        "max_abs_z_avg": 2.0223,
+        "max_abs_z_p95": 2.0434,
+        "high_z_count_avg": 0.0,
+        "top_z_channels": {
+          "L_flex_middle": 151,
+          "R_roll": 151,
+          "inter_hand_delta_roll": 151,
+          "R_yaw": 151,
+          "inter_hand_delta_pitch": 149,
+          "L_fsr_thumb": 2
+        }
+      }
+    },
+    {
+      "letter": "L",
+      "rep": 1,
+      "samples": 151,
+      "top1_dominant": "L",
+      "top1_correct": true,
+      "top3_hit_rate": 1.0,
+      "top3_correct": true,
+      "debug": {
+        "emitted_counts": {
+          "L": 151
+        },
+        "route_counts": {
+          "static": 151
+        },
+        "raw_top1_counts": {
+          "L": 151
+        },
+        "raw_top1_dominant": "L",
+        "raw_top1_correct": true,
+        "raw_top1_conf_avg": 0.9628,
+        "raw_top1_conf_min": 0.9458,
+        "raw_top1_conf_max": 0.9912,
+        "motion_energy_avg": 20.0203,
+        "motion_energy_p95": 20.13,
+        "feature_delta_p95": 0.0145,
+        "accel_delta_p95": 0.1597,
+        "dynamic_gate_counts": {},
+        "max_abs_z_avg": 1.4416,
+        "max_abs_z_p95": 1.4432,
+        "high_z_count_avg": 0.0,
+        "top_z_channels": {
+          "R_roll": 151,
+          "inter_hand_delta_roll": 151,
+          "L_fsr_thumb": 151,
+          "inter_hand_delta_pitch": 142,
+          "R_pitch": 92,
+          "L_yaw": 68
+        }
+      }
+    },
+    {
+      "letter": "L",
+      "rep": 2,
+      "samples": 151,
+      "top1_dominant": "L",
+      "top1_correct": true,
+      "top3_hit_rate": 1.0,
+      "top3_correct": true,
+      "debug": {
+        "emitted_counts": {
+          "L": 151
+        },
+        "route_counts": {
+          "static": 151
+        },
+        "raw_top1_counts": {
+          "L": 151
+        },
+        "raw_top1_dominant": "L",
+        "raw_top1_correct": true,
+        "raw_top1_conf_avg": 0.9589,
+        "raw_top1_conf_min": 0.9423,
+        "raw_top1_conf_max": 0.9715,
+        "motion_energy_avg": 19.9275,
+        "motion_energy_p95": 20.0815,
+        "feature_delta_p95": 0.0156,
+        "accel_delta_p95": 0.1561,
+        "dynamic_gate_counts": {},
+        "max_abs_z_avg": 1.4137,
+        "max_abs_z_p95": 1.4158,
+        "high_z_count_avg": 0.0,
+        "top_z_channels": {
+          "R_roll": 151,
+          "L_yaw": 151,
+          "inter_hand_delta_pitch": 151,
+          "L_fsr_thumb": 151,
+          "R_pitch": 142,
+          "inter_hand_delta_roll": 9
+        }
+      }
+    },
+    {
+      "letter": "L",
+      "rep": 3,
+      "samples": 151,
+      "top1_dominant": "L",
+      "top1_correct": true,
+      "top3_hit_rate": 1.0,
+      "top3_correct": true,
+      "debug": {
+        "emitted_counts": {
+          "L": 151
+        },
+        "route_counts": {
+          "static": 151
+        },
+        "raw_top1_counts": {
+          "L": 151
+        },
+        "raw_top1_dominant": "L",
+        "raw_top1_correct": true,
+        "raw_top1_conf_avg": 0.9126,
+        "raw_top1_conf_min": 0.8692,
+        "raw_top1_conf_max": 0.9576,
+        "motion_energy_avg": 19.8262,
+        "motion_energy_p95": 19.96,
+        "feature_delta_p95": 0.0092,
+        "accel_delta_p95": 0.1457,
+        "dynamic_gate_counts": {},
+        "max_abs_z_avg": 1.4666,
+        "max_abs_z_p95": 1.4718,
+        "high_z_count_avg": 0.0,
+        "top_z_channels": {
+          "L_yaw": 151,
+          "R_roll": 151,
+          "L_fsr_thumb": 151,
+          "R_pitch": 151,
+          "inter_hand_delta_roll": 99,
+          "inter_hand_delta_pitch": 52
+        }
+      }
+    },
+    {
+      "letter": "L",
+      "rep": 4,
+      "samples": 151,
+      "top1_dominant": "L",
+      "top1_correct": true,
+      "top3_hit_rate": 1.0,
+      "top3_correct": true,
+      "debug": {
+        "emitted_counts": {
+          "L": 151
+        },
+        "route_counts": {
+          "static": 151
+        },
+        "raw_top1_counts": {
+          "L": 151
+        },
+        "raw_top1_dominant": "L",
+        "raw_top1_correct": true,
+        "raw_top1_conf_avg": 0.8178,
+        "raw_top1_conf_min": 0.7177,
+        "raw_top1_conf_max": 0.935,
+        "motion_energy_avg": 19.8319,
+        "motion_energy_p95": 19.9445,
+        "feature_delta_p95": 0.0069,
+        "accel_delta_p95": 0.1546,
+        "dynamic_gate_counts": {},
+        "max_abs_z_avg": 1.7187,
+        "max_abs_z_p95": 1.7215,
+        "high_z_count_avg": 0.0,
+        "top_z_channels": {
+          "L_yaw": 151,
+          "R_roll": 151,
+          "R_pitch": 151,
+          "L_fsr_thumb": 151,
+          "inter_hand_delta_roll": 151
+        }
+      }
+    },
+    {
+      "letter": "L",
+      "rep": 5,
+      "samples": 150,
+      "top1_dominant": "L",
+      "top1_correct": true,
+      "top3_hit_rate": 1.0,
+      "top3_correct": true,
+      "debug": {
+        "emitted_counts": {
+          "L": 150
+        },
+        "route_counts": {
+          "static": 150
+        },
+        "raw_top1_counts": {
+          "L": 150
+        },
+        "raw_top1_dominant": "L",
+        "raw_top1_correct": true,
+        "raw_top1_conf_avg": 0.8283,
+        "raw_top1_conf_min": 0.7972,
+        "raw_top1_conf_max": 0.8493,
+        "motion_energy_avg": 20.0997,
+        "motion_energy_p95": 20.1885,
+        "feature_delta_p95": 0.0067,
+        "accel_delta_p95": 0.1369,
+        "dynamic_gate_counts": {},
+        "max_abs_z_avg": 1.701,
+        "max_abs_z_p95": 1.7035,
+        "high_z_count_avg": 0.0,
+        "top_z_channels": {
+          "L_yaw": 150,
+          "R_roll": 150,
+          "inter_hand_delta_pitch": 150,
+          "L_fsr_thumb": 150,
+          "R_pitch": 150
+        }
+      }
+    },
+    {
+      "letter": "H",
+      "rep": 1,
+      "samples": 151,
+      "top1_dominant": "V",
+      "top1_correct": false,
+      "top3_hit_rate": 0.0,
+      "top3_correct": false,
+      "debug": {
+        "emitted_counts": {
+          "V": 150,
+          "None": 1
+        },
+        "route_counts": {
+          "static": 151
+        },
+        "raw_top1_counts": {
+          "V": 148,
+          "T": 3
+        },
+        "raw_top1_dominant": "V",
+        "raw_top1_correct": false,
+        "raw_top1_conf_avg": 0.6052,
+        "raw_top1_conf_min": 0.4813,
+        "raw_top1_conf_max": 0.8154,
+        "motion_energy_avg": 20.4393,
+        "motion_energy_p95": 20.5505,
+        "feature_delta_p95": 0.0261,
+        "accel_delta_p95": 0.1812,
+        "dynamic_gate_counts": {
+          "low_dynamic_confidence": 151
+        },
+        "max_abs_z_avg": 2.4458,
+        "max_abs_z_p95": 2.4642,
+        "high_z_count_avg": 0.0,
+        "top_z_channels": {
+          "L_flex_pinky": 151,
+          "L_yaw": 151,
+          "R_roll": 150,
+          "L_flex_ring": 145,
+          "L_hand_openness": 138,
+          "L_fsr_thumb": 13,
+          "L_flex_index": 6,
+          "inter_hand_delta_pitch": 1
+        }
+      }
+    },
+    {
+      "letter": "H",
+      "rep": 2,
+      "samples": 151,
+      "top1_dominant": "V",
+      "top1_correct": false,
+      "top3_hit_rate": 0.006622516556291391,
+      "top3_correct": false,
+      "debug": {
+        "emitted_counts": {
+          "None": 40,
+          "V": 111
+        },
+        "route_counts": {
+          "dynamic": 37,
+          "static": 114
+        },
+        "raw_top1_counts": {
+          "H": 1,
+          "V": 114
+        },
+        "raw_top1_dominant": "V",
+        "raw_top1_correct": false,
+        "raw_top1_conf_avg": 0.5919,
+        "raw_top1_conf_min": 0.5377,
+        "raw_top1_conf_max": 0.7735,
+        "motion_energy_avg": 20.3455,
+        "motion_energy_p95": 20.483,
+        "feature_delta_p95": 0.0843,
+        "accel_delta_p95": 0.7717,
+        "dynamic_gate_counts": {
+          "low_dynamic_confidence": 151
+        },
+        "max_abs_z_avg": 2.434,
+        "max_abs_z_p95": 2.4551,
+        "high_z_count_avg": 0.0,
+        "top_z_channels": {
+          "L_flex_pinky": 151,
+          "L_flex_ring": 151,
+          "L_hand_openness": 151,
+          "R_roll": 151,
+          "L_yaw": 124,
+          "inter_hand_delta_pitch": 27
+        }
+      }
+    },
+    {
+      "letter": "H",
+      "rep": 3,
+      "samples": 151,
+      "top1_dominant": "V",
+      "top1_correct": false,
+      "top3_hit_rate": 0.006622516556291391,
+      "top3_correct": false,
+      "debug": {
+        "emitted_counts": {
+          "None": 37,
+          "V": 102,
+          "M": 12
+        },
+        "route_counts": {
+          "dynamic": 28,
+          "static": 123
+        },
+        "raw_top1_counts": {
+          "H": 1,
+          "V": 107,
+          "M": 16
+        },
+        "raw_top1_dominant": "V",
+        "raw_top1_correct": false,
+        "raw_top1_conf_avg": 0.6868,
+        "raw_top1_conf_min": 0.4785,
+        "raw_top1_conf_max": 0.891,
+        "motion_energy_avg": 20.398,
+        "motion_energy_p95": 20.535,
+        "feature_delta_p95": 0.0637,
+        "accel_delta_p95": 0.3129,
+        "dynamic_gate_counts": {
+          "low_dynamic_confidence": 136
+        },
+        "max_abs_z_avg": 2.3765,
+        "max_abs_z_p95": 2.4077,
+        "high_z_count_avg": 0.0,
+        "top_z_channels": {
+          "L_flex_pinky": 151,
+          "R_roll": 151,
+          "L_flex_ring": 150,
+          "L_yaw": 138,
+          "L_hand_openness": 92,
+          "L_flex_index": 47,
+          "inter_hand_delta_roll": 13,
+          "inter_hand_delta_pitch": 11
+        }
+      }
+    },
+    {
+      "letter": "H",
+      "rep": 4,
+      "samples": 150,
+      "top1_dominant": "M",
+      "top1_correct": false,
+      "top3_hit_rate": 0.006666666666666667,
+      "top3_correct": false,
+      "debug": {
+        "emitted_counts": {
+          "None": 38,
+          "M": 65,
+          "V": 47
+        },
+        "route_counts": {
+          "dynamic": 29,
+          "static": 121
+        },
+        "raw_top1_counts": {
+          "H": 1,
+          "M": 65,
+          "V": 56
+        },
+        "raw_top1_dominant": "M",
+        "raw_top1_correct": false,
+        "raw_top1_conf_avg": 0.652,
+        "raw_top1_conf_min": 0.4869,
+        "raw_top1_conf_max": 0.9004,
+        "motion_energy_avg": 20.3188,
+        "motion_energy_p95": 20.4645,
+        "feature_delta_p95": 0.0494,
+        "accel_delta_p95": 0.4196,
+        "dynamic_gate_counts": {
+          "low_dynamic_confidence": 134
+        },
+        "max_abs_z_avg": 1.9179,
+        "max_abs_z_p95": 2.2247,
+        "high_z_count_avg": 0.0,
+        "top_z_channels": {
+          "R_roll": 150,
+          "L_fsr_thumb": 150,
+          "inter_hand_delta_roll": 140,
+          "L_flex_ring": 128,
+          "L_yaw": 91,
+          "L_flex_index": 46,
+          "inter_hand_delta_pitch": 38,
+          "L_hand_openness": 7
+        }
+      }
+    },
+    {
+      "letter": "H",
+      "rep": 5,
+      "samples": 151,
+      "top1_dominant": "M",
+      "top1_correct": false,
+      "top3_hit_rate": 0.006622516556291391,
+      "top3_correct": false,
+      "debug": {
+        "emitted_counts": {
+          "None": 39,
+          "M": 112
+        },
+        "route_counts": {
+          "dynamic": 32,
+          "static": 119
+        },
+        "raw_top1_counts": {
+          "OTHER": 1,
+          "M": 109,
+          "V": 10
+        },
+        "raw_top1_dominant": "M",
+        "raw_top1_correct": false,
+        "raw_top1_conf_avg": 0.5777,
+        "raw_top1_conf_min": 0.452,
+        "raw_top1_conf_max": 0.8742,
+        "motion_energy_avg": 20.4608,
+        "motion_energy_p95": 20.585,
+        "feature_delta_p95": 0.0474,
+        "accel_delta_p95": 0.4725,
+        "dynamic_gate_counts": {
+          "not_dynamic_letter": 132
+        },
+        "max_abs_z_avg": 1.9856,
+        "max_abs_z_p95": 2.0721,
+        "high_z_count_avg": 0.0,
+        "top_z_channels": {
+          "L_flex_ring": 151,
+          "R_roll": 151,
+          "L_fsr_thumb": 151,
+          "inter_hand_delta_roll": 151,
+          "L_yaw": 81,
+          "inter_hand_delta_pitch": 65,
+          "L_flex_index": 5
+        }
+      }
+    },
+    {
+      "letter": "J",
+      "rep": 1,
+      "samples": 151,
+      "top1_dominant": "Y",
+      "top1_correct": false,
+      "top3_hit_rate": 0.0,
+      "top3_correct": false,
+      "debug": {
+        "emitted_counts": {
+          "Y": 141,
+          "None": 10
+        },
+        "route_counts": {
+          "static": 151
+        },
+        "raw_top1_counts": {
+          "Y": 151
+        },
+        "raw_top1_dominant": "Y",
+        "raw_top1_correct": false,
+        "raw_top1_conf_avg": 0.7152,
+        "raw_top1_conf_min": 0.3494,
+        "raw_top1_conf_max": 0.8436,
+        "motion_energy_avg": 11.4126,
+        "motion_energy_p95": 11.5925,
+        "feature_delta_p95": 0.0867,
+        "accel_delta_p95": 0.4234,
+        "dynamic_gate_counts": {
+          "not_dynamic_letter": 151
+        },
+        "max_abs_z_avg": 1.6338,
+        "max_abs_z_p95": 1.855,
+        "high_z_count_avg": 0.0,
+        "top_z_channels": {
+          "L_roll": 151,
+          "inter_hand_delta_pitch": 151,
+          "R_flex_middle": 151,
+          "L_yaw": 150,
+          "R_flex_ring": 142,
+          "R_pitch": 9,
+          "R_hand_openness": 1
+        }
+      }
+    },
+    {
+      "letter": "J",
+      "rep": 2,
+      "samples": 151,
+      "top1_dominant": "Y",
+      "top1_correct": false,
+      "top3_hit_rate": 0.0,
+      "top3_correct": false,
+      "debug": {
+        "emitted_counts": {
+          "Y": 151
+        },
+        "route_counts": {
+          "static": 151
+        },
+        "raw_top1_counts": {
+          "Y": 151
+        },
+        "raw_top1_dominant": "Y",
+        "raw_top1_correct": false,
+        "raw_top1_conf_avg": 0.839,
+        "raw_top1_conf_min": 0.827,
+        "raw_top1_conf_max": 0.8497,
+        "motion_energy_avg": 11.4367,
+        "motion_energy_p95": 11.5705,
+        "feature_delta_p95": 0.0158,
+        "accel_delta_p95": 0.1684,
+        "dynamic_gate_counts": {
+          "not_dynamic_letter": 151
+        },
+        "max_abs_z_avg": 1.7546,
+        "max_abs_z_p95": 1.8394,
+        "high_z_count_avg": 0.0,
+        "top_z_channels": {
+          "L_roll": 151,
+          "R_flex_middle": 151,
+          "L_fsr_thumb": 151,
+          "inter_hand_delta_pitch": 111,
+          "R_pitch": 98,
+          "L_yaw": 93
+        }
+      }
+    },
+    {
+      "letter": "J",
+      "rep": 3,
+      "samples": 150,
+      "top1_dominant": "Y",
+      "top1_correct": false,
+      "top3_hit_rate": 0.006666666666666667,
+      "top3_correct": false,
+      "debug": {
+        "emitted_counts": {
+          "None": 21,
+          "Y": 129
+        },
+        "route_counts": {
+          "dynamic": 18,
+          "static": 132
+        },
+        "raw_top1_counts": {
+          "OTHER": 1,
+          "Y": 132
+        },
+        "raw_top1_dominant": "Y",
+        "raw_top1_correct": false,
+        "raw_top1_conf_avg": 0.8454,
+        "raw_top1_conf_min": 0.6732,
+        "raw_top1_conf_max": 0.9858,
+        "motion_energy_avg": 11.7037,
+        "motion_energy_p95": 11.9065,
+        "feature_delta_p95": 0.0589,
+        "accel_delta_p95": 0.5821,
+        "dynamic_gate_counts": {
+          "not_dynamic_letter": 150
+        },
+        "max_abs_z_avg": 1.8396,
+        "max_abs_z_p95": 2.0327,
+        "high_z_count_avg": 0.0,
+        "top_z_channels": {
+          "L_roll": 150,
+          "inter_hand_delta_pitch": 150,
+          "R_flex_middle": 150,
+          "L_yaw": 149,
+          "L_hand_openness": 80,
+          "R_pitch": 71
+        }
+      }
+    },
+    {
+      "letter": "J",
+      "rep": 4,
+      "samples": 151,
+      "top1_dominant": "Y",
+      "top1_correct": false,
+      "top3_hit_rate": 0.0,
+      "top3_correct": false,
+      "debug": {
+        "emitted_counts": {
+          "Y": 151
+        },
+        "route_counts": {
+          "static": 151
+        },
+        "raw_top1_counts": {
+          "Y": 151
+        },
+        "raw_top1_dominant": "Y",
+        "raw_top1_correct": false,
+        "raw_top1_conf_avg": 0.7992,
+        "raw_top1_conf_min": 0.7572,
+        "raw_top1_conf_max": 0.8408,
+        "motion_energy_avg": 11.9851,
+        "motion_energy_p95": 12.132,
+        "feature_delta_p95": 0.0145,
+        "accel_delta_p95": 0.1614,
+        "dynamic_gate_counts": {
+          "not_dynamic_letter": 151
+        },
+        "max_abs_z_avg": 1.6276,
+        "max_abs_z_p95": 1.7096,
+        "high_z_count_avg": 0.0,
+        "top_z_channels": {
+          "L_roll": 151,
+          "R_flex_middle": 151,
+          "inter_hand_delta_pitch": 151,
+          "R_pitch": 151,
+          "L_yaw": 147,
+          "R_hand_openness": 4
+        }
+      }
+    },
+    {
+      "letter": "J",
+      "rep": 5,
+      "samples": 151,
+      "top1_dominant": "Y",
+      "top1_correct": false,
+      "top3_hit_rate": 0.0,
+      "top3_correct": false,
+      "debug": {
+        "emitted_counts": {
+          "Y": 151
+        },
+        "route_counts": {
+          "static": 151
+        },
+        "raw_top1_counts": {
+          "Y": 151
+        },
+        "raw_top1_dominant": "Y",
+        "raw_top1_correct": false,
+        "raw_top1_conf_avg": 0.7554,
+        "raw_top1_conf_min": 0.7075,
+        "raw_top1_conf_max": 0.7934,
+        "motion_energy_avg": 11.8687,
+        "motion_energy_p95": 11.9815,
+        "feature_delta_p95": 0.0133,
+        "accel_delta_p95": 0.1427,
+        "dynamic_gate_counts": {
+          "not_dynamic_letter": 151
+        },
+        "max_abs_z_avg": 1.5167,
+        "max_abs_z_p95": 1.5387,
+        "high_z_count_avg": 0.0,
+        "top_z_channels": {
+          "L_roll": 151,
+          "R_flex_middle": 151,
+          "inter_hand_delta_pitch": 151,
+          "L_yaw": 151,
+          "R_pitch": 110,
+          "R_roll": 27,
+          "L_fsr_thumb": 14
+        }
+      }
+    }
+  ]
+}

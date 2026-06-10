@@ -1,0 +1,1166 @@
+{
+  "raw_analysis": {
+    "raw_user_dir": "C:\\laragon\\www\\sign_gloves_ML_models\\data\\raw\\real\\ravindu-8dd5c02e",
+    "letters": [
+      "A",
+      "B",
+      "C",
+      "D",
+      "E",
+      "F",
+      "G"
+    ],
+    "rest_labels": [
+      "REST_1",
+      "REST_2",
+      "REST_3"
+    ],
+    "labels": [
+      "A",
+      "B",
+      "C",
+      "D",
+      "E",
+      "F",
+      "G",
+      "REST_1",
+      "REST_2",
+      "REST_3"
+    ],
+    "session_counts": {
+      "A": 30,
+      "B": 30,
+      "C": 30,
+      "D": 30,
+      "E": 30,
+      "F": 30,
+      "G": 30,
+      "REST_1": 30,
+      "REST_2": 30,
+      "REST_3": 30
+    },
+    "paired_frame_counts": {
+      "A": 5957,
+      "B": 5952,
+      "C": 5925,
+      "D": 5869,
+      "E": 5919,
+      "F": 5716,
+      "G": 5786,
+      "REST_1": 5879,
+      "REST_2": 5847,
+      "REST_3": 5909
+    },
+    "total_sessions": 300,
+    "total_paired_frames": 58759,
+    "min_sessions_per_letter": 30,
+    "underrepresented_letters": [],
+    "per_letter_quality": {
+      "A": {
+        "sessions": 30,
+        "records": 11914,
+        "paired_frames": 5957,
+        "malformed_records": 0,
+        "missing_fields": {},
+        "bad_dimensions": {},
+        "label_mismatches": 0,
+        "session_pair_frame_stats": {
+          "count": 30,
+          "min": 192.0,
+          "p01": 193.16,
+          "median": 199.0,
+          "p99": 200.0,
+          "max": 200.0,
+          "mean": 198.566667,
+          "std": 1.646883
+        }
+      },
+      "B": {
+        "sessions": 30,
+        "records": 11904,
+        "paired_frames": 5952,
+        "malformed_records": 0,
+        "missing_fields": {},
+        "bad_dimensions": {},
+        "label_mismatches": 0,
+        "session_pair_frame_stats": {
+          "count": 30,
+          "min": 197.0,
+          "p01": 197.0,
+          "median": 198.0,
+          "p99": 200.0,
+          "max": 200.0,
+          "mean": 198.4,
+          "std": 0.8
+        }
+      },
+      "C": {
+        "sessions": 30,
+        "records": 11850,
+        "paired_frames": 5925,
+        "malformed_records": 0,
+        "missing_fields": {},
+        "bad_dimensions": {},
+        "label_mismatches": 0,
+        "session_pair_frame_stats": {
+          "count": 30,
+          "min": 186.0,
+          "p01": 187.74,
+          "median": 198.0,
+          "p99": 200.0,
+          "max": 200.0,
+          "mean": 197.5,
+          "std": 2.717229
+        }
+      },
+      "D": {
+        "sessions": 30,
+        "records": 11738,
+        "paired_frames": 5869,
+        "malformed_records": 0,
+        "missing_fields": {},
+        "bad_dimensions": {},
+        "label_mismatches": 0,
+        "session_pair_frame_stats": {
+          "count": 30,
+          "min": 114.0,
+          "p01": 137.78,
+          "median": 199.0,
+          "p99": 200.0,
+          "max": 200.0,
+          "mean": 195.633333,
+          "std": 15.18658
+        }
+      },
+      "E": {
+        "sessions": 30,
+        "records": 11838,
+        "paired_frames": 5919,
+        "malformed_records": 0,
+        "missing_fields": {},
+        "bad_dimensions": {},
+        "label_mismatches": 0,
+        "session_pair_frame_stats": {
+          "count": 30,
+          "min": 181.0,
+          "p01": 184.77,
+          "median": 198.0,
+          "p99": 199.71,
+          "max": 200.0,
+          "mean": 197.3,
+          "std": 3.236768
+        }
+      },
+      "F": {
+        "sessions": 30,
+        "records": 11432,
+        "paired_frames": 5716,
+        "malformed_records": 0,
+        "missing_fields": {},
+        "bad_dimensions": {},
+        "label_mismatches": 0,
+        "session_pair_frame_stats": {
+          "count": 30,
+          "min": 86.0,
+          "p01": 116.16,
+          "median": 194.0,
+          "p99": 199.71,
+          "max": 200.0,
+          "mean": 190.533333,
+          "std": 19.499972
+        }
+      },
+      "G": {
+        "sessions": 30,
+        "records": 11572,
+        "paired_frames": 5786,
+        "malformed_records": 0,
+        "missing_fields": {},
+        "bad_dimensions": {},
+        "label_mismatches": 0,
+        "session_pair_frame_stats": {
+          "count": 30,
+          "min": 167.0,
+          "p01": 173.38,
+          "median": 193.5,
+          "p99": 199.55,
+          "max": 201.0,
+          "mean": 192.866667,
+          "std": 5.181591
+        }
+      },
+      "REST_1": {
+        "sessions": 30,
+        "records": 11758,
+        "paired_frames": 5879,
+        "malformed_records": 0,
+        "missing_fields": {},
+        "bad_dimensions": {},
+        "label_mismatches": 0,
+        "session_pair_frame_stats": {
+          "count": 30,
+          "min": 178.0,
+          "p01": 181.48,
+          "median": 196.0,
+          "p99": 202.71,
+          "max": 203.0,
+          "mean": 195.966667,
+          "std": 4.262107
+        }
+      },
+      "REST_2": {
+        "sessions": 30,
+        "records": 11694,
+        "paired_frames": 5847,
+        "malformed_records": 0,
+        "missing_fields": {},
+        "bad_dimensions": {},
+        "label_mismatches": 0,
+        "session_pair_frame_stats": {
+          "count": 30,
+          "min": 186.0,
+          "p01": 187.16,
+          "median": 195.0,
+          "p99": 201.71,
+          "max": 202.0,
+          "mean": 194.9,
+          "std": 2.773085
+        }
+      },
+      "REST_3": {
+        "sessions": 30,
+        "records": 11818,
+        "paired_frames": 5909,
+        "malformed_records": 0,
+        "missing_fields": {},
+        "bad_dimensions": {},
+        "label_mismatches": 0,
+        "session_pair_frame_stats": {
+          "count": 30,
+          "min": 178.0,
+          "p01": 181.48,
+          "median": 199.0,
+          "p99": 200.71,
+          "max": 201.0,
+          "mean": 196.966667,
+          "std": 4.324221
+        }
+      }
+    },
+    "global_quality": {
+      "records": 117518,
+      "paired_frames": 58759,
+      "malformed_records": 0,
+      "label_mismatches": 0,
+      "flex_below_config_min": 275826,
+      "flex_above_config_max": 0,
+      "flex_zero_values": 81139,
+      "fsr_saturated_values": 21849,
+      "accel_mag_lt_8": 100,
+      "accel_mag_gt_13": 48,
+      "gyro_mag_gt_100": 186,
+      "missing_fields": {},
+      "bad_dimensions": {},
+      "non_numeric_values": {}
+    },
+    "raw_sensor_stats": {
+      "flex": {
+        "count": 587590,
+        "min": 0.0,
+        "p01": 0.0,
+        "median": 838.0,
+        "p99": 1769.0,
+        "max": 2135.0,
+        "mean": 797.22369,
+        "std": 469.36277
+      },
+      "fsr": {
+        "count": 352554,
+        "min": 0.0,
+        "p01": 0.0,
+        "median": 0.0,
+        "p99": 4095.0,
+        "max": 4095.0,
+        "mean": 497.981626,
+        "std": 1209.487122
+      },
+      "accel_magnitude": {
+        "count": 117518,
+        "min": 2.746833,
+        "p01": 8.59734,
+        "median": 10.062845,
+        "p99": 11.01157,
+        "max": 19.558254,
+        "mean": 9.919469,
+        "std": 0.552567
+      },
+      "gyro_magnitude": {
+        "count": 117518,
+        "min": 0.025981,
+        "p01": 0.486146,
+        "median": 2.441221,
+        "p99": 18.209646,
+        "max": 438.952759,
+        "mean": 3.918256,
+        "std": 9.772037
+      },
+      "quaternion_norm": {
+        "count": 117518,
+        "min": 0.999991,
+        "p01": 0.999994,
+        "median": 1.0,
+        "p99": 1.000006,
+        "max": 1.000009,
+        "mean": 1.0,
+        "std": 3e-06
+      }
+    }
+  },
+  "build": {
+    "seed": 42,
+    "split_ratio": "80/10/10 session-level stratified by (user, letter)",
+    "letters": [
+      "A",
+      "B",
+      "C",
+      "D",
+      "E",
+      "F",
+      "G"
+    ],
+    "rest_labels": [
+      "REST_1",
+      "REST_2",
+      "REST_3"
+    ],
+    "labels": [
+      "A",
+      "B",
+      "C",
+      "D",
+      "E",
+      "F",
+      "G",
+      "REST_1",
+      "REST_2",
+      "REST_3"
+    ],
+    "label_to_idx": {
+      "A": 0,
+      "B": 1,
+      "C": 2,
+      "D": 3,
+      "E": 4,
+      "F": 5,
+      "G": 6,
+      "REST_1": 26,
+      "REST_2": 27,
+      "REST_3": 28
+    },
+    "user_id": "8dd5c02e",
+    "raw_user_dir": "C:\\laragon\\www\\sign_gloves_ML_models\\data\\raw\\real\\ravindu-8dd5c02e",
+    "processed_dir": "C:\\laragon\\www\\sign_gloves_ML_models\\data\\processed\\real\\ag_validation",
+    "discarded_sessions": {},
+    "kept_sessions_by_letter": {
+      "A": 30,
+      "B": 30,
+      "C": 30,
+      "D": 30,
+      "E": 30,
+      "F": 30,
+      "G": 30,
+      "REST_1": 30,
+      "REST_2": 30,
+      "REST_3": 30
+    },
+    "split_sessions": {
+      "train": {
+        "A": 24,
+        "B": 24,
+        "C": 24,
+        "D": 24,
+        "E": 24,
+        "F": 24,
+        "G": 24,
+        "REST_1": 24,
+        "REST_2": 24,
+        "REST_3": 24
+      },
+      "val": {
+        "A": 3,
+        "B": 3,
+        "C": 3,
+        "D": 3,
+        "E": 3,
+        "F": 3,
+        "G": 3,
+        "REST_1": 3,
+        "REST_2": 3,
+        "REST_3": 3
+      },
+      "test": {
+        "A": 3,
+        "B": 3,
+        "C": 3,
+        "D": 3,
+        "E": 3,
+        "F": 3,
+        "G": 3,
+        "REST_1": 3,
+        "REST_2": 3,
+        "REST_3": 3
+      }
+    },
+    "processed_samples": {
+      "train": 14400,
+      "val": 360,
+      "test": 360
+    },
+    "processed_samples_by_letter": {
+      "train": {
+        "A": 1440,
+        "B": 1440,
+        "C": 1440,
+        "D": 1440,
+        "E": 1440,
+        "F": 1440,
+        "G": 1440,
+        "REST_1": 1440,
+        "REST_2": 1440,
+        "REST_3": 1440
+      },
+      "val": {
+        "A": 36,
+        "B": 36,
+        "C": 36,
+        "D": 36,
+        "E": 36,
+        "F": 36,
+        "G": 36,
+        "REST_1": 36,
+        "REST_2": 36,
+        "REST_3": 36
+      },
+      "test": {
+        "A": 36,
+        "B": 36,
+        "C": 36,
+        "D": 36,
+        "E": 36,
+        "F": 36,
+        "G": 36,
+        "REST_1": 36,
+        "REST_2": 36,
+        "REST_3": 36
+      }
+    },
+    "feature_stats_unscaled_train": {
+      "R_flex_thumb": {
+        "mean": 0.116802,
+        "std": 0.088671,
+        "min": 0.0,
+        "max": 0.494925
+      },
+      "R_flex_index": {
+        "mean": 0.041575,
+        "std": 0.058166,
+        "min": 0.0,
+        "max": 0.379654
+      },
+      "R_flex_middle": {
+        "mean": 0.087622,
+        "std": 0.078262,
+        "min": 0.0,
+        "max": 0.435023
+      },
+      "R_flex_ring": {
+        "mean": 0.0715,
+        "std": 0.078649,
+        "min": 0.0,
+        "max": 0.543835
+      },
+      "R_flex_pinky": {
+        "mean": 0.0,
+        "std": 0.0,
+        "min": 0.0,
+        "max": 0.0
+      },
+      "L_flex_thumb": {
+        "mean": 0.0,
+        "std": 0.0,
+        "min": 0.0,
+        "max": 0.0
+      },
+      "L_flex_index": {
+        "mean": 0.098361,
+        "std": 0.109323,
+        "min": 0.0,
+        "max": 0.435941
+      },
+      "L_flex_middle": {
+        "mean": 0.05703,
+        "std": 0.084185,
+        "min": 0.0,
+        "max": 0.443798
+      },
+      "L_flex_ring": {
+        "mean": 0.030098,
+        "std": 0.040364,
+        "min": 0.0,
+        "max": 0.271162
+      },
+      "L_flex_pinky": {
+        "mean": 0.170409,
+        "std": 0.09889,
+        "min": 0.0,
+        "max": 0.509906
+      },
+      "R_fsr_thumb": {
+        "mean": 0.280305,
+        "std": 0.420659,
+        "min": 0.0,
+        "max": 1.0
+      },
+      "R_fsr_index": {
+        "mean": 0.066169,
+        "std": 0.150081,
+        "min": 0.0,
+        "max": 0.850311
+      },
+      "R_fsr_pinky": {
+        "mean": 0.018652,
+        "std": 0.032198,
+        "min": 0.0,
+        "max": 0.260986
+      },
+      "L_fsr_thumb": {
+        "mean": 0.264524,
+        "std": 0.404449,
+        "min": 0.0,
+        "max": 1.0
+      },
+      "L_fsr_index": {
+        "mean": 0.117451,
+        "std": 0.185509,
+        "min": 0.0,
+        "max": 0.813044
+      },
+      "L_fsr_pinky": {
+        "mean": 0.02837,
+        "std": 0.053942,
+        "min": 0.0,
+        "max": 0.460184
+      },
+      "R_roll": {
+        "mean": 18.195063,
+        "std": 52.476264,
+        "min": -151.454179,
+        "max": 100.478497
+      },
+      "R_pitch": {
+        "mean": -29.83598,
+        "std": 47.914291,
+        "min": -96.625313,
+        "max": 86.587092
+      },
+      "R_yaw": {
+        "mean": -35.689928,
+        "std": 96.585662,
+        "min": -190.466699,
+        "max": 192.553094
+      },
+      "L_roll": {
+        "mean": -14.907074,
+        "std": 23.771767,
+        "min": -72.137968,
+        "max": 39.707832
+      },
+      "L_pitch": {
+        "mean": -14.642866,
+        "std": 37.671013,
+        "min": -70.433946,
+        "max": 94.731861
+      },
+      "L_yaw": {
+        "mean": -8.441888,
+        "std": 109.358063,
+        "min": -203.1203,
+        "max": 189.877626
+      },
+      "R_hand_openness": {
+        "mean": 0.079375,
+        "std": 0.050892,
+        "min": 0.0,
+        "max": 0.320104
+      },
+      "L_hand_openness": {
+        "mean": 0.088975,
+        "std": 0.042978,
+        "min": 0.0,
+        "max": 0.25166
+      },
+      "inter_hand_delta_roll": {
+        "mean": 53.553769,
+        "std": 45.214787,
+        "min": 0.006333,
+        "max": 167.774822
+      },
+      "inter_hand_delta_pitch": {
+        "mean": 27.637746,
+        "std": 18.258263,
+        "min": 0.001315,
+        "max": 87.710129
+      }
+    },
+    "feature_stats_scaled_train": {
+      "R_flex_thumb": {
+        "mean": -0.0,
+        "std": 1.0,
+        "min": -1.317259,
+        "max": 4.264341
+      },
+      "R_flex_index": {
+        "mean": 0.0,
+        "std": 1.0,
+        "min": -0.714769,
+        "max": 5.812338
+      },
+      "R_flex_middle": {
+        "mean": -0.0,
+        "std": 1.0,
+        "min": -1.119601,
+        "max": 4.438985
+      },
+      "R_flex_ring": {
+        "mean": -0.0,
+        "std": 1.0,
+        "min": -0.909099,
+        "max": 6.005575
+      },
+      "R_flex_pinky": {
+        "mean": 0.0,
+        "std": 0.0,
+        "min": 0.0,
+        "max": 0.0
+      },
+      "L_flex_thumb": {
+        "mean": 0.0,
+        "std": 0.0,
+        "min": 0.0,
+        "max": 0.0
+      },
+      "L_flex_index": {
+        "mean": -0.0,
+        "std": 1.0,
+        "min": -0.899728,
+        "max": 3.087915
+      },
+      "L_flex_middle": {
+        "mean": 0.0,
+        "std": 1.0,
+        "min": -0.677438,
+        "max": 4.594228
+      },
+      "L_flex_ring": {
+        "mean": -0.0,
+        "std": 1.0,
+        "min": -0.745661,
+        "max": 5.972315
+      },
+      "L_flex_pinky": {
+        "mean": -0.0,
+        "std": 1.0,
+        "min": -1.723229,
+        "max": 3.433093
+      },
+      "R_fsr_thumb": {
+        "mean": 0.0,
+        "std": 1.0,
+        "min": -0.666346,
+        "max": 1.710876
+      },
+      "R_fsr_index": {
+        "mean": 0.0,
+        "std": 1.0,
+        "min": -0.440889,
+        "max": 5.22479
+      },
+      "R_fsr_pinky": {
+        "mean": -0.0,
+        "std": 1.0,
+        "min": -0.579301,
+        "max": 7.52638
+      },
+      "L_fsr_thumb": {
+        "mean": 0.0,
+        "std": 1.0,
+        "min": -0.654036,
+        "max": 1.818463
+      },
+      "L_fsr_index": {
+        "mean": -0.0,
+        "std": 1.0,
+        "min": -0.633128,
+        "max": 3.749647
+      },
+      "L_fsr_pinky": {
+        "mean": -0.0,
+        "std": 1.0,
+        "min": -0.525943,
+        "max": 8.005189
+      },
+      "R_roll": {
+        "mean": 0.0,
+        "std": 1.0,
+        "min": -3.232876,
+        "max": 1.568012
+      },
+      "R_pitch": {
+        "mean": -0.0,
+        "std": 1.0,
+        "min": -1.393933,
+        "max": 2.429819
+      },
+      "R_yaw": {
+        "mean": 0.0,
+        "std": 1.0,
+        "min": -1.602482,
+        "max": 2.363115
+      },
+      "L_roll": {
+        "mean": -0.0,
+        "std": 1.0,
+        "min": -2.407515,
+        "max": 2.297469
+      },
+      "L_pitch": {
+        "mean": 0.0,
+        "std": 1.0,
+        "min": -1.481008,
+        "max": 2.903419
+      },
+      "L_yaw": {
+        "mean": -0.0,
+        "std": 1.0,
+        "min": -1.780193,
+        "max": 1.813488
+      },
+      "R_hand_openness": {
+        "mean": 0.0,
+        "std": 1.0,
+        "min": -1.559686,
+        "max": 4.730248
+      },
+      "L_hand_openness": {
+        "mean": -0.0,
+        "std": 1.0,
+        "min": -2.07025,
+        "max": 3.785332
+      },
+      "inter_hand_delta_roll": {
+        "mean": 0.0,
+        "std": 1.0,
+        "min": -1.18429,
+        "max": 2.526188
+      },
+      "inter_hand_delta_pitch": {
+        "mean": 0.0,
+        "std": 1.0,
+        "min": -1.51364,
+        "max": 3.290148
+      }
+    }
+  },
+  "training": {
+    "dataset": {
+      "train_samples": 14400,
+      "val_samples": 360,
+      "test_samples": 360,
+      "n_features": 26,
+      "n_classes": 10,
+      "n_train_classes": 10,
+      "missing_train_labels": [],
+      "unknown_eval_label": -1,
+      "unknown_val_samples": 0,
+      "unknown_test_samples": 0
+    },
+    "label_map": {
+      "0": 0,
+      "1": 1,
+      "2": 2,
+      "3": 3,
+      "4": 4,
+      "5": 5,
+      "6": 6,
+      "26": 7,
+      "27": 8,
+      "28": 9
+    },
+    "inv_label_map": {
+      "0": 0,
+      "1": 1,
+      "2": 2,
+      "3": 3,
+      "4": 4,
+      "5": 5,
+      "6": 6,
+      "7": 26,
+      "8": 27,
+      "9": 28
+    },
+    "label_names": {
+      "0": "A",
+      "1": "B",
+      "2": "C",
+      "3": "D",
+      "4": "E",
+      "5": "F",
+      "6": "G",
+      "26": "REST_1",
+      "27": "REST_2",
+      "28": "REST_3"
+    },
+    "models": {
+      "xgb": {
+        "training": {
+          "best_cv_score": 0.9997916660387312,
+          "best_params": {
+            "colsample_bytree": 0.7,
+            "learning_rate": 0.1,
+            "max_depth": 6,
+            "min_child_weight": 5,
+            "n_estimators": 200,
+            "reg_alpha": 0.5,
+            "reg_lambda": 3.0,
+            "subsample": 0.7
+          },
+          "training_time_s": 14.6
+        },
+        "val": {
+          "accuracy": 1.0,
+          "f1_weighted": 1.0
+        },
+        "test": {
+          "accuracy": 1.0,
+          "f1_weighted": 1.0
+        },
+        "model_path": "C:\\laragon\\www\\sign_gloves_ML_models\\data\\models\\ag_validation\\xgb.pkl",
+        "weighted": false
+      },
+      "rf": {
+        "training": {
+          "best_cv_score": 0.9995833295656895,
+          "best_params": {
+            "max_depth": 12,
+            "max_features": "sqrt",
+            "min_samples_leaf": 3,
+            "min_samples_split": 5,
+            "n_estimators": 300
+          },
+          "training_time_s": 36.7
+        },
+        "val": {
+          "accuracy": 1.0,
+          "f1_weighted": 1.0
+        },
+        "test": {
+          "accuracy": 1.0,
+          "f1_weighted": 1.0
+        },
+        "model_path": "C:\\laragon\\www\\sign_gloves_ML_models\\data\\models\\ag_validation\\rf.pkl",
+        "weighted": false
+      },
+      "svm": {
+        "training": {
+          "best_cv_score": 0.9996527717075974,
+          "best_params": {
+            "C": 10.0,
+            "gamma": "scale",
+            "kernel": "rbf"
+          },
+          "training_time_s": 12.0
+        },
+        "val": {
+          "accuracy": 1.0,
+          "f1_weighted": 1.0
+        },
+        "test": {
+          "accuracy": 1.0,
+          "f1_weighted": 1.0
+        },
+        "model_path": "C:\\laragon\\www\\sign_gloves_ML_models\\data\\models\\ag_validation\\svm.pkl",
+        "weighted": false
+      },
+      "mlp": {
+        "training": {
+          "training_time_s": 0.8,
+          "hidden": [
+            64,
+            32
+          ],
+          "activation": "relu",
+          "calibration": "sigmoid (prefit on val)",
+          "n_iter": 26
+        },
+        "val": {
+          "accuracy": 1.0,
+          "f1_weighted": 1.0
+        },
+        "test": {
+          "accuracy": 1.0,
+          "f1_weighted": 1.0
+        },
+        "model_path": "C:\\laragon\\www\\sign_gloves_ML_models\\data\\models\\ag_validation\\mlp.pkl",
+        "weighted": true
+      }
+    },
+    "best_model": "xgb",
+    "best_val_accuracy": 1.0,
+    "data_source": "real"
+  },
+  "evaluation": {
+    "best_model": "xgb",
+    "model_path": "C:\\laragon\\www\\sign_gloves_ML_models\\data\\models\\ag_validation\\xgb.pkl",
+    "weighted": false,
+    "label_names": {
+      "0": "A",
+      "1": "B",
+      "2": "C",
+      "3": "D",
+      "4": "E",
+      "5": "F",
+      "6": "G",
+      "26": "REST_1",
+      "27": "REST_2",
+      "28": "REST_3"
+    },
+    "classification_report": {
+      "A": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1-score": 1.0,
+        "support": 36.0
+      },
+      "B": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1-score": 1.0,
+        "support": 36.0
+      },
+      "C": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1-score": 1.0,
+        "support": 36.0
+      },
+      "D": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1-score": 1.0,
+        "support": 36.0
+      },
+      "E": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1-score": 1.0,
+        "support": 36.0
+      },
+      "F": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1-score": 1.0,
+        "support": 36.0
+      },
+      "G": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1-score": 1.0,
+        "support": 36.0
+      },
+      "REST_1": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1-score": 1.0,
+        "support": 36.0
+      },
+      "REST_2": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1-score": 1.0,
+        "support": 36.0
+      },
+      "REST_3": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1-score": 1.0,
+        "support": 36.0
+      },
+      "accuracy": 1.0,
+      "macro avg": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1-score": 1.0,
+        "support": 360.0
+      },
+      "weighted avg": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1-score": 1.0,
+        "support": 360.0
+      }
+    },
+    "confusion_matrix_labels": [
+      "A",
+      "B",
+      "C",
+      "D",
+      "E",
+      "F",
+      "G",
+      "REST_1",
+      "REST_2",
+      "REST_3"
+    ],
+    "confusion_matrix": [
+      [
+        36,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        36,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        36,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        36,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        36,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        0,
+        36,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        36,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        36,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        36,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        36
+      ]
+    ],
+    "accuracy": 1.0,
+    "macro_f1": 1.0,
+    "letter_accuracy": 1.0,
+    "rest_rejection_accuracy": 1.0,
+    "min_class_recall": 1.0
+  },
+  "confusion_matrix_artifact": "C:\\laragon\\www\\sign_gloves_ML_models\\data\\figures\\ag_validation\\ag_confusion_matrix.csv",
+  "recommendation": {
+    "decision": "GO",
+    "thresholds": {
+      "accuracy": ">= 0.90",
+      "macro_f1": ">= 0.90",
+      "min_class_recall": ">= 0.80",
+      "letter_accuracy": ">= 0.90",
+      "rest_rejection_accuracy": ">= 0.90"
+    },
+    "reasons": [
+      "no blocking metric concerns on the held-out A-G sessions"
+    ]
+  }
+}

@@ -1,0 +1,926 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BSL Sign Language Gloves — Dashboard</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js"></script>
+<script src="/static/js/diagnostics.js?v=endpoint-select"></script>
+<style>
+:root{--bg:#0f172a;--surface:#1e293b;--border:#334155;--text:#e2e8f0;--muted:#94a3b8;
+--accent:#3b82f6;--green:#22c55e;--red:#ef4444;--yellow:#eab308}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:system-ui,-apple-system,sans-serif;background:var(--bg);color:var(--text);min-height:100vh}
+.top-bar{background:var(--surface);border-bottom:1px solid var(--border);padding:.75rem 1.5rem;display:flex;align-items:center;gap:1rem}
+.top-bar h1{font-size:1.25rem;font-weight:600}
+.status-dot{width:10px;height:10px;border-radius:50%;background:var(--red)}
+.status-dot.connected{background:var(--green)}
+.metrics-bar{display:flex;gap:1.5rem;margin-left:auto;font-size:.85rem;color:var(--muted)}
+.metrics-bar span b{color:var(--text)}
+nav{display:flex;background:var(--surface);border-bottom:1px solid var(--border)}
+nav button{flex:1;padding:.6rem;background:none;border:none;color:var(--muted);cursor:pointer;font-size:.9rem;border-bottom:2px solid transparent;transition:.2s}
+nav button.active{color:var(--accent);border-bottom-color:var(--accent)}
+nav button:hover{color:var(--text)}
+.tab{display:none;padding:1.5rem;max-width:1100px;margin:0 auto}
+.tab.active{display:block}
+.card{background:var(--surface);border:1px solid var(--border);border-radius:.75rem;padding:1.25rem;margin-bottom:1rem}
+.card h3{font-size:1rem;margin-bottom:.75rem;color:var(--accent)}
+.grid-2{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+.grid-3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:1rem}
+@media(max-width:768px){.grid-2,.grid-3{grid-template-columns:1fr}}
+.big-sign{font-size:5rem;text-align:center;padding:1rem;font-weight:700;color:var(--accent)}
+.big-sign.none{color:var(--muted);font-size:2rem}
+label{display:block;font-size:.85rem;color:var(--muted);margin-bottom:.25rem}
+input,select,textarea{width:100%;padding:.5rem;border:1px solid var(--border);border-radius:.5rem;background:var(--bg);color:var(--text);font-size:.85rem}
+input[type=range]{padding:0;background:transparent;border:none;accent-color:var(--accent)}
+button.btn{padding:.5rem 1.25rem;border:none;border-radius:.5rem;cursor:pointer;font-size:.85rem;transition:.2s}
+.btn-primary{background:var(--accent);color:white}.btn-primary:hover{opacity:.85}
+.btn-danger{background:var(--red);color:white}.btn-danger:hover{opacity:.85}
+.btn-secondary{background:var(--border);color:var(--text)}.btn-secondary:hover{background:#475569}
+.result-card{text-align:center;padding:1rem}
+.result-card .sign{font-size:3rem;font-weight:700;color:var(--green)}
+.result-card .conf{font-size:1.5rem;color:var(--muted)}
+.result-card .meta{font-size:.8rem;color:var(--muted);margin-top:.5rem}
+table{width:100%;border-collapse:collapse;font-size:.85rem}
+th{text-align:left;padding:.5rem;border-bottom:1px solid var(--border);color:var(--muted);font-weight:500}
+td{padding:.5rem;border-bottom:1px solid var(--border)}
+.tag{display:inline-block;padding:.15rem .5rem;border-radius:.25rem;font-size:.75rem}
+.tag-active{background:#166534;color:#bbf7d0}.tag-stale{background:#713f12;color:#fef08a}
+.tag-predict{background:#1e3a8a;color:#bfdbfe}.tag-collect{background:#164e63;color:#a5f3fc}
+.history-list{max-height:300px;overflow-y:auto;font-size:.85rem}
+.history-item{display:flex;justify-content:space-between;padding:.35rem 0;border-bottom:1px solid var(--border)}
+#file-upload-area{border:2px dashed var(--border);border-radius:.75rem;padding:2rem;text-align:center;cursor:pointer;transition:.2s}
+#file-upload-area:hover{border-color:var(--accent)}
+#file-upload-area.dragover{border-color:var(--accent);background:rgba(59,130,246,.05)}
+.chart-container{position:relative;height:200px}
+.toggle-row{display:flex;align-items:center;gap:.75rem;margin-bottom:.5rem}
+.toggle{position:relative;width:44px;height:24px;background:var(--border);border-radius:12px;cursor:pointer;transition:.2s}
+.toggle.on{background:var(--accent)}
+.toggle::after{content:'';position:absolute;top:2px;left:2px;width:20px;height:20px;background:white;border-radius:50%;transition:.2s}
+.toggle.on::after{left:22px}
+.slider-row{display:flex;align-items:center;gap:.75rem;margin-bottom:.75rem}
+.slider-row label{min-width:180px;margin:0}
+.slider-row input[type=range]{flex:1}
+.slider-row .val{min-width:50px;text-align:right;font-size:.85rem;font-weight:600}
+.info-table td:first-child{color:var(--muted);width:40%}
+</style>
+</head>
+<body>
+
+<div class="top-bar">
+  <div class="status-dot" id="ws-status"></div>
+  <h1>BSL Sign Language Gloves</h1>
+  <div class="metrics-bar">
+    <span>Predictions: <b id="m-total">0</b></span>
+    <span>Avg Latency: <b id="m-latency">0</b>ms</span>
+    <span>Avg Confidence: <b id="m-conf">0</b></span>
+    <span>Uptime: <b id="m-uptime">0s</b></span>
+  </div>
+  <div style="display:flex;gap:.5rem;margin-left:auto">
+    <div id="idx-pill-right" onclick="DiagnosticsModal.open()" style="
+      display:flex;align-items:center;gap:.4rem;padding:.25rem .6rem;
+      border-radius:999px;border:1px solid var(--border);font-size:.78rem;
+      font-weight:500;cursor:pointer;
+    " title="Click to open gloves diagnostics">
+      <span id="idx-dot-right" style="width:8px;height:8px;border-radius:50%;background:var(--red);flex-shrink:0"></span>Right
+    </div>
+    <div id="idx-pill-left" onclick="DiagnosticsModal.open()" style="
+      display:flex;align-items:center;gap:.4rem;padding:.25rem .6rem;
+      border-radius:999px;border:1px solid var(--border);font-size:.78rem;
+      font-weight:500;cursor:pointer;
+    " title="Click to open gloves diagnostics">
+      <span id="idx-dot-left" style="width:8px;height:8px;border-radius:50%;background:var(--red);flex-shrink:0"></span>Left
+    </div>
+  </div>
+  <a href="/collection" style="font-size:.8rem;color:var(--accent);text-decoration:none;margin-left:.5rem">Data Collection →</a>
+</div>
+
+<nav>
+  <button class="active" data-tab="live">Live Feed</button>
+  <button data-tab="manual">Manual Input</button>
+  <button data-tab="batch">Batch Upload</button>
+  <button data-tab="settings">Settings</button>
+  <button data-tab="connections">Connections</button>
+</nav>
+
+<!-- LIVE FEED TAB -->
+<div class="tab active" id="tab-live">
+  <div class="grid-2">
+    <div>
+      <div class="card">
+        <h3>Current Sign</h3>
+        <div class="big-sign none" id="live-sign">Waiting...</div>
+        <div style="text-align:center;color:var(--muted);font-size:.9rem" id="live-conf"></div>
+      </div>
+      <div class="card">
+        <h3>Calibration</h3>
+        <p style="font-size:.85rem;color:var(--muted);margin-bottom:.5rem">
+          <b>New user setup:</b> place both hands flat on the table, palms down, fingers straight,
+          then click <b>Capture neutral (3s)</b>. Optionally refine with reference letters A, B, C.
+          Save your profile so a return visit just needs <i>Load profile</i>.
+        </p>
+        <div style="display:flex;gap:.5rem;margin-bottom:.5rem;flex-wrap:wrap">
+          <button class="btn btn-primary" id="btn-calibrate">Capture neutral (3s)</button>
+          <button class="btn btn-secondary" id="btn-reset">Reset State</button>
+          <button class="btn btn-danger" id="btn-clear-calib">Clear Calibration</button>
+        </div>
+        <div style="display:flex;gap:.4rem;margin-bottom:.5rem;flex-wrap:wrap;align-items:center">
+          <span style="font-size:.8rem;color:var(--muted)">Refine (optional):</span>
+          <button class="btn btn-secondary btn-ref" data-letter="A" disabled>A (2s)</button>
+          <button class="btn btn-secondary btn-ref" data-letter="B" disabled>B (2s)</button>
+          <button class="btn btn-secondary btn-ref" data-letter="C" disabled>C (2s)</button>
+        </div>
+        <div style="display:flex;gap:.4rem;margin-bottom:.5rem;flex-wrap:wrap;align-items:center">
+          <input type="text" id="calib-label" placeholder="profile name" maxlength="64"
+                 style="flex:1;min-width:120px;padding:.4rem;font-size:.85rem" disabled>
+          <button class="btn btn-primary" id="btn-save-calib" disabled>Save profile</button>
+        </div>
+        <div style="display:flex;gap:.4rem;margin-bottom:.75rem;flex-wrap:wrap;align-items:center">
+          <select id="calib-profiles" style="flex:1;min-width:120px;padding:.4rem;font-size:.85rem">
+            <option value="">— saved profiles —</option>
+          </select>
+          <button class="btn btn-secondary" id="btn-load-calib">Load profile</button>
+        </div>
+        <div id="calib-status" style="font-size:.85rem;color:var(--muted)">No calibration applied.</div>
+      </div>
+      <div class="card">
+        <h3>Top-3 Predictions (diagnostic)</h3>
+        <p style="font-size:.8rem;color:var(--muted);margin-bottom:.5rem">
+          Raw model output regardless of confidence threshold. Useful when the main display says
+          &ldquo;Waiting&rdquo; — see what the model is leaning toward and how confident.
+        </p>
+        <div id="topk-list" style="font-family:ui-monospace,monospace;font-size:.9rem;color:var(--muted)">
+          —
+        </div>
+      </div>
+      <div class="card">
+        <h3>Prediction History</h3>
+        <div class="history-list" id="live-history"></div>
+      </div>
+    </div>
+    <div>
+      <div class="card">
+        <h3>Confidence Over Time</h3>
+        <div class="chart-container"><canvas id="chart-conf"></canvas></div>
+      </div>
+      <div class="card">
+        <h3>Letter Frequency</h3>
+        <div class="chart-container"><canvas id="chart-freq"></canvas></div>
+      </div>
+      <div class="card">
+        <div class="toggle-row">
+          <div class="toggle on" id="tts-toggle"></div>
+          <span>Browser TTS</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- MANUAL INPUT TAB -->
+<div class="tab" id="tab-manual">
+  <div class="grid-2">
+    <div>
+      <div class="card">
+        <h3>Raw Sensor Input</h3>
+        <form id="form-raw">
+          <div class="grid-2" style="margin-bottom:.75rem">
+            <div>
+              <label>Right Flex (5 ints)</label>
+              <input name="right_flex" value="1850,820,3680,3740,3700">
+            </div>
+            <div>
+              <label>Left Flex (5 ints)</label>
+              <input name="left_flex" value="800,800,800,800,800">
+            </div>
+            <div>
+              <label>Right FSR (3 ints)</label>
+              <input name="right_fsr" value="2650,2890,180">
+            </div>
+            <div>
+              <label>Left FSR (3 ints)</label>
+              <input name="left_fsr" value="0,0,0">
+            </div>
+            <div>
+              <label>Right Accel (x,y,z m/s²)</label>
+              <input name="right_accel" value="-0.45,3.21,9.12">
+            </div>
+            <div>
+              <label>Left Accel (x,y,z m/s²)</label>
+              <input name="left_accel" value="0.12,-0.08,9.78">
+            </div>
+            <div>
+              <label>Right Quaternion (w,x,y,z)</label>
+              <input name="right_quaternion" value="0.92,0.08,-0.37,0.05">
+            </div>
+            <div>
+              <label>Left Quaternion (w,x,y,z)</label>
+              <input name="left_quaternion" value="1.0,0.0,0.0,0.0">
+            </div>
+          </div>
+          <button type="submit" class="btn btn-primary">Predict (Raw)</button>
+        </form>
+      </div>
+      <div class="card">
+        <h3>Feature Vector Input</h3>
+        <form id="form-features">
+          <label>26 features (comma-separated, pre-scaled)</label>
+          <textarea name="features" rows="3" style="margin-bottom:.5rem">0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5</textarea>
+          <button type="submit" class="btn btn-primary">Predict (Features)</button>
+        </form>
+      </div>
+    </div>
+    <div>
+      <div class="card">
+        <h3>Result</h3>
+        <div class="result-card" id="manual-result">
+          <div class="sign" style="color:var(--muted)">—</div>
+          <div class="conf"></div>
+          <div class="meta"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- BATCH UPLOAD TAB -->
+<div class="tab" id="tab-batch">
+  <div class="grid-2">
+    <div>
+      <div class="card">
+        <h3>Upload File</h3>
+        <div id="file-upload-area">
+          <p style="font-size:1.5rem;margin-bottom:.5rem">📁</p>
+          <p>Drop <b>.npz</b> or <b>.csv</b> here, or click to browse</p>
+          <input type="file" id="file-input" accept=".npz,.csv" style="display:none">
+        </div>
+        <div style="margin-top:.75rem;font-size:.85rem;color:var(--muted)" id="file-info"></div>
+      </div>
+    </div>
+    <div>
+      <div class="card">
+        <h3>Batch Results</h3>
+        <div id="batch-results" style="font-size:.9rem;color:var(--muted)">No results yet.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SETTINGS TAB -->
+<div class="tab" id="tab-settings">
+  <div class="grid-2">
+    <div>
+      <div class="card">
+        <h3>Confidence Thresholds</h3>
+        <div class="slider-row">
+          <label>Static Confidence</label>
+          <input type="range" min="0" max="1" step="0.01" value="0.55" id="s-static">
+          <span class="val" id="sv-static">0.55</span>
+        </div>
+        <div class="slider-row">
+          <label>Dynamic Confidence</label>
+          <input type="range" min="0" max="1" step="0.01" value="0.60" id="s-dynamic">
+          <span class="val" id="sv-dynamic">0.60</span>
+        </div>
+        <div class="slider-row">
+          <label>Motion Energy (m/s²)</label>
+          <input type="range" min="0" max="30" step="0.1" value="2.5" id="s-motion">
+          <span class="val" id="sv-motion">2.5</span>
+        </div>
+      </div>
+      <div class="card">
+        <h3>Text-to-Speech</h3>
+        <div class="toggle-row" style="margin-bottom:.75rem">
+          <div class="toggle on" id="s-tts-enabled"></div>
+          <span>Server TTS Enabled</span>
+        </div>
+        <div class="slider-row">
+          <label>TTS Rate</label>
+          <input type="range" min="50" max="400" step="10" value="150" id="s-tts-rate">
+          <span class="val" id="sv-tts-rate">150</span>
+        </div>
+        <div class="slider-row">
+          <label>TTS Volume</label>
+          <input type="range" min="0" max="1" step="0.05" value="1.0" id="s-tts-vol">
+          <span class="val" id="sv-tts-vol">1.0</span>
+        </div>
+      </div>
+      <div style="display:flex;gap:.5rem">
+        <button class="btn btn-primary" id="btn-apply-settings">Apply Settings</button>
+        <button class="btn btn-secondary" id="btn-reset-settings">Reset to Defaults</button>
+      </div>
+    </div>
+    <div>
+      <div class="card">
+        <h3>Model Info</h3>
+        <table class="info-table">
+          <tr><td>Static Model</td><td>Auto-selected from training report (best of RF / XGBoost / SVM)</td></tr>
+          <tr><td>Dynamic Model</td><td>CNN-LSTM v2 — real data (H, J)</td></tr>
+          <tr><td>Features</td><td>26 (flex ×10, FSR ×6, quaternion ×8, derived ×2)</td></tr>
+          <tr><td>Input Gloves</td><td>Dual (right + left)</td></tr>
+          <tr><td>Sampling Rate</td><td>50 Hz per glove</td></tr>
+          <tr><td>TTS Engine</td><td id="info-tts-engine">—</td></tr>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- CONNECTIONS TAB -->
+<div class="tab" id="tab-connections">
+  <div class="card">
+    <h3>Connected Gloves</h3>
+    <table id="conn-table">
+      <thead>
+        <tr><th>Client ID</th><th>Endpoint</th><th>Hand</th><th>IP</th><th>Status</th><th>Packets</th><th>Avg Latency</th><th>Battery</th><th></th></tr>
+      </thead>
+      <tbody id="conn-tbody"></tbody>
+    </table>
+    <div id="conn-empty" style="padding:1rem;text-align:center;color:var(--muted)">No gloves connected.</div>
+  </div>
+  <div class="card" style="margin-top:1rem">
+    <h3>Pairing Instructions</h3>
+    <ol style="padding-left:1.5rem;line-height:1.8;color:var(--muted);font-size:.9rem">
+      <li>Power on both ESP32 gloves (right hand first)</li>
+      <li>Connect gloves to the same WiFi network as this server</li>
+      <li>Configure each glove for the needed endpoint: <code>ws://&lt;server-ip&gt;:8000/ws/predict</code> or <code>ws://&lt;server-ip&gt;:8000/ws/collect</code></li>
+      <li>Gloves will appear above once they start sending data</li>
+      <li>Status shows <span class="tag tag-active">active</span> if data received within 2 seconds</li>
+    </ol>
+  </div>
+</div>
+
+<script>
+/* =====================================================
+   BSL Dashboard — main JS
+   ===================================================== */
+const API = '';
+const WS_URL = `ws://${location.host}/ws/dashboard`;
+
+// --- Tab Navigation ---
+document.querySelectorAll('nav button').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('nav button').forEach(b => b.classList.remove('active'));
+    document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+    btn.classList.add('active');
+    document.getElementById('tab-' + btn.dataset.tab).classList.add('active');
+    if (btn.dataset.tab === 'connections') refreshConnections();
+  });
+});
+
+// --- Chart.js Setup ---
+const confData = [];
+const confLabels = [];
+const freqMap = {};
+const MAX_POINTS = 100;
+
+const confChart = new Chart(document.getElementById('chart-conf'), {
+  type: 'line',
+  data: {labels: confLabels, datasets: [{
+    label: 'Confidence', data: confData, borderColor: '#3b82f6', backgroundColor: 'rgba(59,130,246,.1)',
+    fill: true, tension: .3, pointRadius: 0
+  }]},
+  options: {animation: false, scales: {y: {min: 0, max: 1, ticks: {color: '#94a3b8'}}, x: {display: false}},
+    plugins: {legend: {display: false}}, maintainAspectRatio: false}
+});
+
+const freqChart = new Chart(document.getElementById('chart-freq'), {
+  type: 'bar',
+  data: {labels: [], datasets: [{label: 'Count', data: [], backgroundColor: '#3b82f6'}]},
+  options: {animation: false, scales: {y: {beginAtZero: true, ticks: {color: '#94a3b8'}}, x: {ticks: {color: '#94a3b8'}}},
+    plugins: {legend: {display: false}}, maintainAspectRatio: false}
+});
+
+function updateFreqChart() {
+  const sorted = Object.entries(freqMap).sort((a, b) => b[1] - a[1]).slice(0, 15);
+  freqChart.data.labels = sorted.map(e => e[0]);
+  freqChart.data.datasets[0].data = sorted.map(e => e[1]);
+  freqChart.update();
+}
+
+// --- Browser TTS ---
+let ttsEnabled = true;
+const ttsToggle = document.getElementById('tts-toggle');
+ttsToggle.addEventListener('click', () => {
+  ttsEnabled = !ttsEnabled;
+  ttsToggle.classList.toggle('on', ttsEnabled);
+});
+
+let lastSpoken = '';
+let lastSpokenTime = 0;
+let ttsCandidate = '';
+let ttsCandidateFrames = 0;
+const TTS_STABLE_FRAMES = 8;
+function speakSign(sign) {
+  if (!ttsEnabled || !sign || !window.speechSynthesis) return;
+  const now = Date.now();
+  if (sign === lastSpoken && now - lastSpokenTime < 2000) return;
+  const u = new SpeechSynthesisUtterance(sign);
+  u.rate = 1.2;
+  window.speechSynthesis.cancel();
+  window.speechSynthesis.speak(u);
+  lastSpoken = sign;
+  lastSpokenTime = now;
+}
+
+function queueSpeakSign(sign) {
+  if (!sign) {
+    ttsCandidate = '';
+    ttsCandidateFrames = 0;
+    return;
+  }
+  if (sign === ttsCandidate) ttsCandidateFrames += 1;
+  else {
+    ttsCandidate = sign;
+    ttsCandidateFrames = 1;
+  }
+  if (ttsCandidateFrames >= TTS_STABLE_FRAMES) speakSign(sign);
+}
+
+// --- WebSocket ---
+let ws = null;
+let reconnectTimer = null;
+const statusDot = document.getElementById('ws-status');
+
+function connectWS() {
+  ws = new WebSocket(WS_URL);
+  ws.onopen = () => {
+    statusDot.classList.add('connected');
+    if (reconnectTimer) { clearTimeout(reconnectTimer); reconnectTimer = null; }
+    refreshConnections();
+  };
+  ws.onclose = () => {
+    statusDot.classList.remove('connected');
+    reconnectTimer = setTimeout(connectWS, 3000);
+  };
+  ws.onerror = () => ws.close();
+  ws.onmessage = (e) => {
+    const msg = JSON.parse(e.data);
+    handleWSMessage(msg);
+  };
+}
+
+function handleWSMessage(msg) {
+  if (msg.type === 'init') {
+    updateConnTable(msg.connections || []);
+  } else if (msg.type === 'connections') {
+    updateConnTable(msg.connections || []);
+  } else if (msg.type === 'prediction') {
+    onPrediction(msg);
+  } else if (msg.type === 'connection') {
+    refreshConnections();
+  } else if (msg.type === 'settings_changed') {
+    loadSettingsIntoUI(msg.settings);
+  }
+}
+
+function onPrediction(msg) {
+  const signEl = document.getElementById('live-sign');
+  const confEl = document.getElementById('live-conf');
+  const rawTop = Array.isArray(msg.top_k) && msg.top_k.length ? msg.top_k[0] : null;
+  if (msg.is_rest && msg.display_label) {
+    signEl.textContent = msg.display_label.replace('_', ' ');
+    signEl.className = 'big-sign none';
+    confEl.textContent = `${msg.confidence ? (msg.confidence * 100).toFixed(1) + '% ' : ''}(rest)`;
+    queueSpeakSign(null);
+  } else if (msg.sign) {
+    signEl.textContent = msg.sign;
+    signEl.className = 'big-sign';
+    confEl.textContent = `${(msg.confidence * 100).toFixed(1)}% (${msg.route})`;
+    queueSpeakSign(msg.sign);
+    freqMap[msg.sign] = (freqMap[msg.sign] || 0) + 1;
+    updateFreqChart();
+  } else {
+    signEl.textContent = '—';
+    signEl.className = 'big-sign none';
+    confEl.textContent = rawTop
+      ? `Raw ${rawTop.sign} ${(rawTop.confidence * 100).toFixed(1)}% (${msg.route})`
+      : 'Below threshold';
+    queueSpeakSign(null);
+  }
+  // Top-K diagnostic display — always update, even when below threshold
+  renderTopK(msg.top_k);
+  // Calibration status (updates live as buffer fills)
+  if (msg.calibration) renderCalibStatus(msg.calibration);
+  // Confidence chart
+  confData.push(msg.confidence || 0);
+  confLabels.push('');
+  if (confData.length > MAX_POINTS) { confData.shift(); confLabels.shift(); }
+  confChart.update();
+  // History
+  const hist = document.getElementById('live-history');
+  const t = new Date(msg.timestamp * 1000).toLocaleTimeString();
+  const item = document.createElement('div');
+  item.className = 'history-item';
+  item.innerHTML = `<span>${msg.sign || msg.display_label || '—'}</span><span>${msg.confidence ? (msg.confidence * 100).toFixed(1) + '%' : ''}</span><span style="color:var(--muted)">${t}</span>`;
+  hist.prepend(item);
+  if (hist.children.length > 50) hist.removeChild(hist.lastChild);
+}
+
+function renderTopK(topK) {
+  const el = document.getElementById('topk-list');
+  if (!el) return;
+  if (!Array.isArray(topK) || !topK.length) { el.textContent = '—'; return; }
+  el.innerHTML = topK.map((p, i) => {
+    const pct = (p.confidence * 100).toFixed(1).padStart(5);
+    return `<div>${i + 1}. <b style="color:var(--text)">${p.sign}</b> &nbsp; ${pct}%</div>`;
+  }).join('');
+}
+
+function renderCalibStatus(c) {
+  const el = document.getElementById('calib-status');
+  if (!el) return;
+  const refs = (c.refs_done || []).join(',') || '—';
+  if (c.active) {
+    const what = c.state && c.state.startsWith('ref:') ? `ref ${c.state.slice(4)}` : 'neutral';
+    el.innerHTML = `<span style="color:var(--yellow)">Calibrating ${what}… ${c.collected}/${c.target} frames</span>`;
+  } else if (c.offset_applied) {
+    const label = c.label ? `<b>${c.label}</b>` : '(unsaved)';
+    el.innerHTML = `<span style="color:var(--green)">Calibration: ${label} · neutral ✓ · refs ${refs}</span>`;
+  } else {
+    el.innerHTML = `No calibration applied.`;
+  }
+  // Toggle the refinement / save controls based on neutral-done state.
+  const neutralDone = !!c.offset_applied;
+  document.querySelectorAll('.btn-ref').forEach(b => { b.disabled = !neutralDone || c.active; });
+  document.getElementById('btn-save-calib').disabled = !neutralDone || c.active;
+  document.getElementById('calib-label').disabled = !neutralDone || c.active;
+}
+
+connectWS();
+
+// --- Metrics Polling ---
+async function refreshMetrics() {
+  try {
+    const r = await fetch(API + '/api/metrics');
+    const m = await r.json();
+    document.getElementById('m-total').textContent = m.total_predictions;
+    document.getElementById('m-latency').textContent = m.avg_latency_ms.toFixed(1);
+    document.getElementById('m-conf').textContent = m.avg_confidence.toFixed(3);
+    const s = Math.round(m.uptime_seconds);
+    const mins = Math.floor(s / 60);
+    document.getElementById('m-uptime').textContent = mins > 0 ? `${mins}m ${s % 60}s` : `${s}s`;
+  } catch(e) {}
+}
+setInterval(refreshMetrics, 5000);
+refreshMetrics();
+
+// --- Calibration + Reset ---
+async function refreshCalibStatus() {
+  try {
+    const r = await fetch(API + '/api/calibrate/status');
+    if (r.ok) renderCalibStatus(await r.json());
+  } catch(_) {}
+}
+
+document.getElementById('btn-calibrate').addEventListener('click', async () => {
+  const btn = document.getElementById('btn-calibrate');
+  btn.disabled = true;
+  try {
+    // n_frames omitted -> server uses CALIBRATION['neutral_frames'] (150 = 3s).
+    const r = await fetch(API + '/api/calibrate/start', {
+      method: 'POST', headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify({}),
+    });
+    if (r.ok) renderCalibStatus(await r.json());
+  } catch(e) { console.error('Calibrate failed', e); }
+  finally {
+    setTimeout(() => { btn.disabled = false; refreshCalibStatus(); }, 3500);
+  }
+});
+
+document.getElementById('btn-reset').addEventListener('click', async () => {
+  try {
+    await fetch(API + '/api/calibrate/reset', {method: 'POST'});
+    document.getElementById('live-sign').textContent = '—';
+    document.getElementById('live-sign').className = 'big-sign none';
+    document.getElementById('live-conf').textContent = 'Reset';
+  } catch(e) { console.error('Reset failed', e); }
+});
+
+document.getElementById('btn-clear-calib').addEventListener('click', async () => {
+  try {
+    const r = await fetch(API + '/api/calibrate/clear', {method: 'POST'});
+    if (r.ok) renderCalibStatus(await r.json());
+  } catch(e) { console.error('Clear calibration failed', e); }
+});
+
+document.querySelectorAll('.btn-ref').forEach(btn => {
+  btn.addEventListener('click', async () => {
+    const letter = btn.dataset.letter;
+    document.querySelectorAll('.btn-ref').forEach(b => b.disabled = true);
+    try {
+      const r = await fetch(API + '/api/calibrate/reference/start', {
+        method: 'POST', headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({letter}),
+      });
+      if (r.ok) renderCalibStatus(await r.json());
+    } catch(e) { console.error('Reference capture failed', e); }
+    finally { setTimeout(refreshCalibStatus, 2500); }
+  });
+});
+
+document.getElementById('btn-save-calib').addEventListener('click', async () => {
+  const label = (document.getElementById('calib-label').value || '').trim();
+  if (!label) return;
+  try {
+    const r = await fetch(API + '/api/calibrate/save', {
+      method: 'POST', headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify({label}),
+    });
+    if (r.ok) {
+      renderCalibStatus(await r.json());
+      refreshCalibProfiles();
+    } else {
+      const err = await r.json().catch(() => ({detail: 'save failed'}));
+      alert(`Save failed: ${err.detail}`);
+    }
+  } catch(e) { console.error('Save profile failed', e); }
+});
+
+document.getElementById('btn-load-calib').addEventListener('click', async () => {
+  const sel = document.getElementById('calib-profiles');
+  const label = sel.value;
+  if (!label) return;
+  try {
+    const r = await fetch(API + '/api/calibrate/load', {
+      method: 'POST', headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify({label}),
+    });
+    if (r.ok) renderCalibStatus(await r.json());
+    else {
+      const err = await r.json().catch(() => ({detail: 'load failed'}));
+      alert(`Load failed: ${err.detail}`);
+    }
+  } catch(e) { console.error('Load profile failed', e); }
+});
+
+async function refreshCalibProfiles() {
+  try {
+    const r = await fetch(API + '/api/calibrate/profiles');
+    if (!r.ok) return;
+    const profiles = await r.json();
+    const sel = document.getElementById('calib-profiles');
+    const current = sel.value;
+    sel.innerHTML = '<option value="">— saved profiles —</option>'
+      + profiles.map(p => {
+          const refs = (p.refs_done && p.refs_done.length) ? ` (${p.refs_done.join('')})` : '';
+          return `<option value="${p.label}">${p.label}${refs}</option>`;
+        }).join('');
+    if (current) sel.value = current;
+  } catch(_) {}
+}
+
+refreshCalibStatus();
+refreshCalibProfiles();
+
+// --- Manual Input ---
+document.getElementById('form-raw').addEventListener('submit', async (e) => {
+  e.preventDefault();
+  const f = new FormData(e.target);
+  const body = {
+    right_flex: f.get('right_flex').split(',').map(Number),
+    right_fsr: f.get('right_fsr').split(',').map(Number),
+    right_quaternion: f.get('right_quaternion').split(',').map(Number),
+    right_accel: f.get('right_accel').split(',').map(Number),
+    left_flex: f.get('left_flex').split(',').map(Number),
+    left_fsr: f.get('left_fsr').split(',').map(Number),
+    left_quaternion: f.get('left_quaternion').split(',').map(Number),
+    left_accel: f.get('left_accel').split(',').map(Number),
+  };
+  try {
+    const r = await fetch(API + '/api/predict/raw', {
+      method: 'POST', headers: {'Content-Type': 'application/json'}, body: JSON.stringify(body)
+    });
+    const data = await r.json();
+    showManualResult(data);
+  } catch(err) { showManualResult({error: err.message}); }
+});
+
+document.getElementById('form-features').addEventListener('submit', async (e) => {
+  e.preventDefault();
+  const f = new FormData(e.target);
+  const features = f.get('features').split(',').map(Number);
+  try {
+    const r = await fetch(API + '/api/predict/features', {
+      method: 'POST', headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify({features})
+    });
+    const data = await r.json();
+    showManualResult(data);
+  } catch(err) { showManualResult({error: err.message}); }
+});
+
+function showManualResult(data) {
+  const el = document.getElementById('manual-result');
+  if (data.error) {
+    el.innerHTML = `<div class="sign" style="color:var(--red)">Error</div><div class="meta">${data.error}</div>`;
+    return;
+  }
+  el.innerHTML = `
+    <div class="sign" style="color:${data.sign ? 'var(--green)' : 'var(--muted)'}">${data.sign || '—'}</div>
+    <div class="conf">${data.confidence ? (data.confidence * 100).toFixed(2) + '%' : 'Below threshold'}</div>
+    <div class="meta">Route: ${data.route || '—'} | Latency: ${data.latency_ms}ms${data.audio_url ? ' | 🔊 Audio' : ''}</div>
+  `;
+  if (data.sign) speakSign(data.sign);
+}
+
+// --- Batch Upload ---
+const uploadArea = document.getElementById('file-upload-area');
+const fileInput = document.getElementById('file-input');
+uploadArea.addEventListener('click', () => fileInput.click());
+uploadArea.addEventListener('dragover', (e) => { e.preventDefault(); uploadArea.classList.add('dragover'); });
+uploadArea.addEventListener('dragleave', () => uploadArea.classList.remove('dragover'));
+uploadArea.addEventListener('drop', (e) => {
+  e.preventDefault(); uploadArea.classList.remove('dragover');
+  if (e.dataTransfer.files.length) uploadFile(e.dataTransfer.files[0]);
+});
+fileInput.addEventListener('change', () => { if (fileInput.files.length) uploadFile(fileInput.files[0]); });
+
+async function uploadFile(file) {
+  document.getElementById('file-info').textContent = `Uploading ${file.name} (${(file.size/1024).toFixed(1)} KB)...`;
+  const fd = new FormData();
+  fd.append('file', file);
+  try {
+    const r = await fetch(API + '/api/predict/batch', {method: 'POST', body: fd});
+    const data = await r.json();
+    showBatchResults(data);
+    document.getElementById('file-info').textContent = `✓ ${file.name} processed.`;
+  } catch(err) {
+    document.getElementById('batch-results').textContent = 'Error: ' + err.message;
+    document.getElementById('file-info').textContent = `✗ Upload failed.`;
+  }
+}
+
+function showBatchResults(data) {
+  if (data.detail) {
+    document.getElementById('batch-results').textContent = 'Error: ' + data.detail;
+    return;
+  }
+  let html = `<div style="margin-bottom:.75rem"><b>${data.total_samples}</b> samples processed in <b>${data.total_time_ms}ms</b> (avg <b>${data.avg_latency_ms}ms</b>/sample)`;
+  if (data.accuracy !== undefined) html += ` | Accuracy: <b>${(data.accuracy * 100).toFixed(2)}%</b>`;
+  html += '</div>';
+  html += '<div style="max-height:300px;overflow-y:auto"><table><thead><tr><th>#</th><th>Sign</th><th>Confidence</th><th>Latency</th></tr></thead><tbody>';
+  (data.predictions || []).slice(0, 200).forEach((p, i) => {
+    html += `<tr><td>${i + 1}</td><td>${p.sign || '—'}</td><td>${p.confidence ? (p.confidence * 100).toFixed(1) + '%' : '—'}</td><td>${p.latency_ms}ms</td></tr>`;
+  });
+  html += '</tbody></table></div>';
+  if (data.total_samples > 200) html += `<div style="color:var(--muted);font-size:.8rem;margin-top:.5rem">Showing first 200 of ${data.total_samples} predictions.</div>`;
+  document.getElementById('batch-results').innerHTML = html;
+}
+
+// --- Settings ---
+function bindSlider(id) {
+  const slider = document.getElementById(id);
+  const val = document.getElementById(id.replace('s-', 'sv-'));
+  slider.addEventListener('input', () => val.textContent = slider.value);
+}
+['s-static', 's-dynamic', 's-motion', 's-tts-rate', 's-tts-vol'].forEach(bindSlider);
+
+const sTtsEnabled = document.getElementById('s-tts-enabled');
+let serverTtsEnabled = true;
+sTtsEnabled.addEventListener('click', () => {
+  serverTtsEnabled = !serverTtsEnabled;
+  sTtsEnabled.classList.toggle('on', serverTtsEnabled);
+});
+
+document.getElementById('btn-apply-settings').addEventListener('click', async () => {
+  const body = {
+    static_confidence_threshold: parseFloat(document.getElementById('s-static').value),
+    dynamic_confidence_threshold: parseFloat(document.getElementById('s-dynamic').value),
+    motion_energy_threshold: parseFloat(document.getElementById('s-motion').value),
+    tts_enabled: serverTtsEnabled,
+    tts_rate: parseInt(document.getElementById('s-tts-rate').value),
+    tts_volume: parseFloat(document.getElementById('s-tts-vol').value),
+  };
+  try {
+    const r = await fetch(API + '/api/settings', {
+      method: 'PUT', headers: {'Content-Type': 'application/json'}, body: JSON.stringify(body)
+    });
+    const data = await r.json();
+    loadSettingsIntoUI(data);
+  } catch(e) { console.error('Settings update failed', e); }
+});
+
+document.getElementById('btn-reset-settings').addEventListener('click', async () => {
+  const defaults = {
+    static_confidence_threshold: 0.55,
+    dynamic_confidence_threshold: 0.60,
+    motion_energy_threshold: 2.5,
+    tts_enabled: true,
+    tts_rate: 150,
+    tts_volume: 1.0,
+  };
+  try {
+    const r = await fetch(API + '/api/settings', {
+      method: 'PUT', headers: {'Content-Type': 'application/json'}, body: JSON.stringify(defaults)
+    });
+    const data = await r.json();
+    loadSettingsIntoUI(data);
+  } catch(e) { console.error('Reset failed', e); }
+});
+
+function loadSettingsIntoUI(s) {
+  if (!s) return;
+  const set = (id, val) => {
+    const el = document.getElementById(id);
+    if (el) { el.value = val; }
+    const vEl = document.getElementById(id.replace('s-', 'sv-'));
+    if (vEl) vEl.textContent = val;
+  };
+  set('s-static', s.static_confidence_threshold);
+  set('s-dynamic', s.dynamic_confidence_threshold);
+  set('s-motion', s.motion_energy_threshold);
+  set('s-tts-rate', s.tts_rate);
+  set('s-tts-vol', s.tts_volume);
+  serverTtsEnabled = s.tts_enabled;
+  sTtsEnabled.classList.toggle('on', serverTtsEnabled);
+  if (s.tts_engine) document.getElementById('info-tts-engine').textContent = s.tts_engine;
+}
+
+// Load settings on page load
+fetch(API + '/api/settings').then(r => r.json()).then(loadSettingsIntoUI).catch(() => {});
+
+// --- Connections ---
+async function refreshConnections() {
+  try {
+    const r = await fetch(API + '/api/connections');
+    const data = await r.json();
+    updateConnTable(data.connections || []);
+  } catch(e) {}
+}
+
+function html(value) {
+  return String(value ?? '').replace(/[&<>"']/g, ch => ({
+    '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'
+  }[ch]));
+}
+
+function setGlovePill(side, active) {
+  const dot = document.getElementById(`idx-dot-${side}`);
+  const pill = document.getElementById(`idx-pill-${side}`);
+  if (dot) dot.style.background = active ? 'var(--green)' : 'var(--red)';
+  if (pill) {
+    pill.style.borderColor = active ? 'rgba(34,197,94,.7)' : 'var(--border)';
+    pill.style.color = active ? '#bbf7d0' : 'var(--text)';
+  }
+}
+
+function updateGlovePillsFromConnections(conns = []) {
+  const active = {1: false, 2: false};
+  conns.forEach(c => {
+    const handId = Number(c.hand_id);
+    if ((handId === 1 || handId === 2) && c.status === 'active') {
+      active[handId] = true;
+    }
+  });
+  setGlovePill('right', active[1]);
+  setGlovePill('left', active[2]);
+}
+
+function updateConnTable(conns = []) {
+  const tbody = document.getElementById('conn-tbody');
+  const empty = document.getElementById('conn-empty');
+  if (!Array.isArray(conns)) conns = [];
+  updateGlovePillsFromConnections(conns);
+  if (!conns.length) {
+    tbody.innerHTML = '';
+    empty.style.display = '';
+    return;
+  }
+  empty.style.display = 'none';
+  tbody.innerHTML = conns.map(c => {
+    const endpoint = c.endpoint === 'collect' ? 'collect' : 'predict';
+    const status = c.status === 'active' ? 'active' : 'stale';
+    const battery = c.battery_pct != null ? `${html(c.battery_pct)}%` : '-';
+    const clientId = html(c.client_id);
+    return `
+      <tr>
+        <td><code>${clientId}</code></td>
+        <td><span class="tag tag-${endpoint}">${endpoint}</span></td>
+        <td>${html(c.hand)} (${html(c.hand_id)})</td>
+        <td>${html(c.ip || '-')}</td>
+        <td><span class="tag tag-${status}">${status}</span></td>
+        <td>${html(c.packet_count ?? 0)}</td>
+        <td>${html(c.avg_latency_ms ?? 0)}ms</td>
+        <td>${battery}</td>
+        <td><button class="btn btn-danger" style="padding:.25rem .5rem;font-size:.75rem" onclick="disconnectClient('${clientId}')">Disconnect</button></td>
+      </tr>
+    `;
+  }).join('');
+}
+
+async function disconnectClient(id) {
+  try {
+    await fetch(API + `/api/connections/${encodeURIComponent(id)}/disconnect`, {method: 'POST', headers: {'Content-Type': 'application/json'}, body: '{}'});
+    refreshConnections();
+  } catch(e) {}
+}
+setInterval(refreshConnections, 2000);
+refreshConnections();
+
+// --- Gloves diagnostics modal ---
+DiagnosticsModal.init();
+</script>
+</body>
+</html>

@@ -1,0 +1,411 @@
+{
+  "summary": {
+    "letters": [
+      "H",
+      "J"
+    ],
+    "reps": 5,
+    "n_trials": 10,
+    "top1_correct": 1,
+    "top3_correct": 0,
+    "top1_accuracy": 0.1,
+    "top3_accuracy": 0.0,
+    "raw_top1_accuracy": 0.0,
+    "targets": {
+      "top1": 0.6,
+      "top3": 0.8
+    },
+    "pass": {
+      "top1": false,
+      "top3": false
+    }
+  },
+  "trials": [
+    {
+      "letter": "H",
+      "rep": 1,
+      "samples": 87,
+      "top1_dominant": "H",
+      "top1_correct": true,
+      "top3_hit_rate": 0.011494252873563218,
+      "top3_correct": false,
+      "debug": {
+        "emitted_counts": {
+          "None": 74,
+          "H": 13
+        },
+        "route_counts": {
+          "dynamic": 24,
+          "static": 63
+        },
+        "raw_top1_counts": {
+          "H": 1,
+          "M": 63
+        },
+        "raw_top1_dominant": "M",
+        "raw_top1_correct": false,
+        "raw_top1_conf_avg": 0.3871,
+        "raw_top1_conf_min": 0.2919,
+        "raw_top1_conf_max": 0.9986,
+        "motion_energy_avg": 20.3558,
+        "motion_energy_p95": 20.7171,
+        "max_abs_z_avg": 2.0586,
+        "max_abs_z_p95": 2.1727,
+        "high_z_count_avg": 0.0,
+        "top_z_channels": {
+          "L_flex_pinky": 87,
+          "R_roll": 87,
+          "L_flex_ring": 86,
+          "L_hand_openness": 83,
+          "inter_hand_delta_roll": 52,
+          "inter_hand_delta_pitch": 37,
+          "L_fsr_thumb": 3
+        }
+      }
+    },
+    {
+      "letter": "H",
+      "rep": 2,
+      "samples": 73,
+      "top1_dominant": null,
+      "top1_correct": false,
+      "top3_hit_rate": 0.0,
+      "top3_correct": false,
+      "debug": {
+        "emitted_counts": {
+          "None": 73
+        },
+        "route_counts": {
+          "static": 73
+        },
+        "raw_top1_counts": {
+          "M": 73
+        },
+        "raw_top1_dominant": "M",
+        "raw_top1_correct": false,
+        "raw_top1_conf_avg": 0.399,
+        "raw_top1_conf_min": 0.3334,
+        "raw_top1_conf_max": 0.4466,
+        "motion_energy_avg": 20.4332,
+        "motion_energy_p95": 20.5542,
+        "max_abs_z_avg": 2.4331,
+        "max_abs_z_p95": 2.5436,
+        "high_z_count_avg": 0.0,
+        "top_z_channels": {
+          "L_flex_ring": 73,
+          "L_flex_pinky": 73,
+          "L_hand_openness": 73,
+          "R_roll": 73,
+          "inter_hand_delta_roll": 67,
+          "inter_hand_delta_pitch": 6
+        }
+      }
+    },
+    {
+      "letter": "H",
+      "rep": 3,
+      "samples": 73,
+      "top1_dominant": null,
+      "top1_correct": false,
+      "top3_hit_rate": 0.0,
+      "top3_correct": false,
+      "debug": {
+        "emitted_counts": {
+          "None": 73
+        },
+        "route_counts": {
+          "static": 73
+        },
+        "raw_top1_counts": {
+          "M": 73
+        },
+        "raw_top1_dominant": "M",
+        "raw_top1_correct": false,
+        "raw_top1_conf_avg": 0.2963,
+        "raw_top1_conf_min": 0.2656,
+        "raw_top1_conf_max": 0.3441,
+        "motion_energy_avg": 20.4902,
+        "motion_energy_p95": 20.6076,
+        "max_abs_z_avg": 2.2038,
+        "max_abs_z_p95": 2.3167,
+        "high_z_count_avg": 0.0,
+        "top_z_channels": {
+          "L_flex_ring": 73,
+          "L_flex_pinky": 73,
+          "R_roll": 73,
+          "inter_hand_delta_roll": 73,
+          "L_hand_openness": 42,
+          "L_yaw": 31
+        }
+      }
+    },
+    {
+      "letter": "H",
+      "rep": 4,
+      "samples": 73,
+      "top1_dominant": null,
+      "top1_correct": false,
+      "top3_hit_rate": 0.0,
+      "top3_correct": false,
+      "debug": {
+        "emitted_counts": {
+          "None": 73
+        },
+        "route_counts": {
+          "static": 73
+        },
+        "raw_top1_counts": {
+          "M": 73
+        },
+        "raw_top1_dominant": "M",
+        "raw_top1_correct": false,
+        "raw_top1_conf_avg": 0.4012,
+        "raw_top1_conf_min": 0.3749,
+        "raw_top1_conf_max": 0.4443,
+        "motion_energy_avg": 20.4958,
+        "motion_energy_p95": 20.6172,
+        "max_abs_z_avg": 2.4726,
+        "max_abs_z_p95": 2.6887,
+        "high_z_count_avg": 0.0,
+        "top_z_channels": {
+          "L_flex_ring": 73,
+          "L_flex_pinky": 73,
+          "R_roll": 73,
+          "inter_hand_delta_roll": 73,
+          "L_hand_openness": 71,
+          "L_yaw": 2
+        }
+      }
+    },
+    {
+      "letter": "H",
+      "rep": 5,
+      "samples": 75,
+      "top1_dominant": null,
+      "top1_correct": false,
+      "top3_hit_rate": 0.0,
+      "top3_correct": false,
+      "debug": {
+        "emitted_counts": {
+          "None": 75
+        },
+        "route_counts": {
+          "static": 75
+        },
+        "raw_top1_counts": {
+          "M": 3,
+          "T": 72
+        },
+        "raw_top1_dominant": "T",
+        "raw_top1_correct": false,
+        "raw_top1_conf_avg": 0.3269,
+        "raw_top1_conf_min": 0.2666,
+        "raw_top1_conf_max": 0.3713,
+        "motion_energy_avg": 20.5338,
+        "motion_energy_p95": 20.7389,
+        "max_abs_z_avg": 1.9059,
+        "max_abs_z_p95": 2.0139,
+        "high_z_count_avg": 0.0,
+        "top_z_channels": {
+          "L_flex_pinky": 75,
+          "R_roll": 75,
+          "L_yaw": 75,
+          "L_flex_ring": 74,
+          "inter_hand_delta_roll": 73,
+          "inter_hand_delta_pitch": 3
+        }
+      }
+    },
+    {
+      "letter": "J",
+      "rep": 1,
+      "samples": 74,
+      "top1_dominant": null,
+      "top1_correct": false,
+      "top3_hit_rate": 0.0,
+      "top3_correct": false,
+      "debug": {
+        "emitted_counts": {
+          "None": 74
+        },
+        "route_counts": {
+          "static": 74
+        },
+        "raw_top1_counts": {
+          "Y": 74
+        },
+        "raw_top1_dominant": "Y",
+        "raw_top1_correct": false,
+        "raw_top1_conf_avg": 0.269,
+        "raw_top1_conf_min": 0.2666,
+        "raw_top1_conf_max": 0.2709,
+        "motion_energy_avg": 11.6807,
+        "motion_energy_p95": 11.7462,
+        "max_abs_z_avg": 1.6839,
+        "max_abs_z_p95": 1.7174,
+        "high_z_count_avg": 0.0,
+        "top_z_channels": {
+          "L_roll": 74,
+          "L_yaw": 74,
+          "L_hand_openness": 74,
+          "L_fsr_thumb": 74,
+          "R_yaw": 66,
+          "L_flex_pinky": 8
+        }
+      }
+    },
+    {
+      "letter": "J",
+      "rep": 2,
+      "samples": 73,
+      "top1_dominant": null,
+      "top1_correct": false,
+      "top3_hit_rate": 0.0,
+      "top3_correct": false,
+      "debug": {
+        "emitted_counts": {
+          "None": 73
+        },
+        "route_counts": {
+          "static": 73
+        },
+        "raw_top1_counts": {
+          "I": 73
+        },
+        "raw_top1_dominant": "I",
+        "raw_top1_correct": false,
+        "raw_top1_conf_avg": 0.2667,
+        "raw_top1_conf_min": 0.2632,
+        "raw_top1_conf_max": 0.2782,
+        "motion_energy_avg": 12.0231,
+        "motion_energy_p95": 12.1404,
+        "max_abs_z_avg": 1.6602,
+        "max_abs_z_p95": 1.6629,
+        "high_z_count_avg": 0.0,
+        "top_z_channels": {
+          "L_yaw": 73,
+          "L_roll": 73,
+          "L_hand_openness": 73,
+          "L_flex_pinky": 73,
+          "R_pitch": 40,
+          "R_yaw": 33
+        }
+      }
+    },
+    {
+      "letter": "J",
+      "rep": 3,
+      "samples": 74,
+      "top1_dominant": null,
+      "top1_correct": false,
+      "top3_hit_rate": 0.0,
+      "top3_correct": false,
+      "debug": {
+        "emitted_counts": {
+          "None": 74
+        },
+        "route_counts": {
+          "static": 74
+        },
+        "raw_top1_counts": {
+          "I": 51,
+          "Y": 23
+        },
+        "raw_top1_dominant": "I",
+        "raw_top1_correct": false,
+        "raw_top1_conf_avg": 0.2693,
+        "raw_top1_conf_min": 0.2636,
+        "raw_top1_conf_max": 0.2776,
+        "motion_energy_avg": 11.7888,
+        "motion_energy_p95": 11.9167,
+        "max_abs_z_avg": 1.6887,
+        "max_abs_z_p95": 1.697,
+        "high_z_count_avg": 0.0,
+        "top_z_channels": {
+          "L_yaw": 74,
+          "L_roll": 74,
+          "L_hand_openness": 74,
+          "L_flex_pinky": 74,
+          "L_fsr_thumb": 71,
+          "R_pitch": 3
+        }
+      }
+    },
+    {
+      "letter": "J",
+      "rep": 4,
+      "samples": 74,
+      "top1_dominant": null,
+      "top1_correct": false,
+      "top3_hit_rate": 0.0,
+      "top3_correct": false,
+      "debug": {
+        "emitted_counts": {
+          "None": 74
+        },
+        "route_counts": {
+          "static": 74
+        },
+        "raw_top1_counts": {
+          "I": 74
+        },
+        "raw_top1_dominant": "I",
+        "raw_top1_correct": false,
+        "raw_top1_conf_avg": 0.2928,
+        "raw_top1_conf_min": 0.2857,
+        "raw_top1_conf_max": 0.3024,
+        "motion_energy_avg": 12.5676,
+        "motion_energy_p95": 12.6787,
+        "max_abs_z_avg": 1.6542,
+        "max_abs_z_p95": 1.658,
+        "high_z_count_avg": 0.0,
+        "top_z_channels": {
+          "L_yaw": 74,
+          "L_roll": 74,
+          "L_flex_pinky": 74,
+          "L_hand_openness": 74,
+          "R_pitch": 65,
+          "inter_hand_delta_pitch": 9
+        }
+      }
+    },
+    {
+      "letter": "J",
+      "rep": 5,
+      "samples": 73,
+      "top1_dominant": null,
+      "top1_correct": false,
+      "top3_hit_rate": 0.0,
+      "top3_correct": false,
+      "debug": {
+        "emitted_counts": {
+          "None": 73
+        },
+        "route_counts": {
+          "static": 73
+        },
+        "raw_top1_counts": {
+          "I": 73
+        },
+        "raw_top1_dominant": "I",
+        "raw_top1_correct": false,
+        "raw_top1_conf_avg": 0.3231,
+        "raw_top1_conf_min": 0.318,
+        "raw_top1_conf_max": 0.3319,
+        "motion_energy_avg": 12.6391,
+        "motion_energy_p95": 12.7864,
+        "max_abs_z_avg": 1.6449,
+        "max_abs_z_p95": 1.652,
+        "high_z_count_avg": 0.0,
+        "top_z_channels": {
+          "L_yaw": 73,
+          "L_roll": 73,
+          "L_hand_openness": 73,
+          "R_pitch": 64,
+          "inter_hand_delta_pitch": 45,
+          "L_flex_pinky": 37
+        }
+      }
+    }
+  ]
+}

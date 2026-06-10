@@ -1,0 +1,33 @@
+{
+  "deployed": true,
+  "copied": {
+    "C:\\laragon\\www\\sign_gloves_ML_models\\data\\models\\xgboost_static_v2.pkl": "C:\\laragon\\www\\sign_gloves_ML_models\\data\\models\\full_user_validation\\xgb.pkl",
+    "C:\\laragon\\www\\sign_gloves_ML_models\\data\\models\\rf_static_v2.pkl": "C:\\laragon\\www\\sign_gloves_ML_models\\data\\models\\full_user_validation\\rf.pkl",
+    "C:\\laragon\\www\\sign_gloves_ML_models\\data\\models\\svm_static_v2.pkl": "C:\\laragon\\www\\sign_gloves_ML_models\\data\\models\\full_user_validation\\svm.pkl",
+    "C:\\laragon\\www\\sign_gloves_ML_models\\data\\models\\mlp_static_v2.pkl": "C:\\laragon\\www\\sign_gloves_ML_models\\data\\models\\full_user_validation\\mlp.pkl",
+    "C:\\laragon\\www\\sign_gloves_ML_models\\data\\processed\\real\\train.npz": "C:\\laragon\\www\\sign_gloves_ML_models\\data\\processed\\real\\full_user_validation\\train.npz",
+    "C:\\laragon\\www\\sign_gloves_ML_models\\data\\processed\\real\\val.npz": "C:\\laragon\\www\\sign_gloves_ML_models\\data\\processed\\real\\full_user_validation\\val.npz",
+    "C:\\laragon\\www\\sign_gloves_ML_models\\data\\processed\\real\\test.npz": "C:\\laragon\\www\\sign_gloves_ML_models\\data\\processed\\real\\full_user_validation\\test.npz",
+    "C:\\laragon\\www\\sign_gloves_ML_models\\data\\processed\\real\\dynamic_train.npz": "C:\\laragon\\www\\sign_gloves_ML_models\\data\\processed\\real\\full_user_validation\\dynamic_train.npz",
+    "C:\\laragon\\www\\sign_gloves_ML_models\\data\\processed\\real\\dynamic_val.npz": "C:\\laragon\\www\\sign_gloves_ML_models\\data\\processed\\real\\full_user_validation\\dynamic_val.npz",
+    "C:\\laragon\\www\\sign_gloves_ML_models\\data\\processed\\real\\dynamic_test.npz": "C:\\laragon\\www\\sign_gloves_ML_models\\data\\processed\\real\\full_user_validation\\dynamic_test.npz",
+    "C:\\laragon\\www\\sign_gloves_ML_models\\data\\processed\\real\\scaler.pkl": "C:\\laragon\\www\\sign_gloves_ML_models\\data\\processed\\real\\full_user_validation\\scaler.pkl",
+    "C:\\laragon\\www\\sign_gloves_ML_models\\data\\processed\\real\\scaler_stats.json": "C:\\laragon\\www\\sign_gloves_ML_models\\data\\processed\\real\\full_user_validation\\scaler_stats.json",
+    "C:\\laragon\\www\\sign_gloves_ML_models\\data\\processed\\real\\coverage_report.json": "C:\\laragon\\www\\sign_gloves_ML_models\\data\\processed\\real\\full_user_validation\\coverage_report.json",
+    "C:\\laragon\\www\\sign_gloves_ML_models\\data\\processed\\real\\full_build_report.json": "C:\\laragon\\www\\sign_gloves_ML_models\\data\\processed\\real\\full_user_validation\\full_build_report.json",
+    "C:\\laragon\\www\\sign_gloves_ML_models\\data\\models\\training_report_real.json": "C:\\laragon\\www\\sign_gloves_ML_models\\data\\models\\full_user_validation\\training_report.json",
+    "C:\\laragon\\www\\sign_gloves_ML_models\\data\\models\\cnn_lstm_dynamic_v2.pt": "C:\\laragon\\www\\sign_gloves_ML_models\\data\\models\\full_user_validation\\cnn_lstm.pt",
+    "C:\\laragon\\www\\sign_gloves_ML_models\\data\\models\\dynamic_training_report_real.json": "C:\\laragon\\www\\sign_gloves_ML_models\\data\\models\\full_user_validation\\dynamic_training_report.json",
+    "C:\\laragon\\www\\sign_gloves_ML_models\\data\\models\\full_user_validation_report.json": "C:\\laragon\\www\\sign_gloves_ML_models\\data\\models\\full_user_validation\\full_user_validation_report.json"
+  },
+  "best_static_model": "xgb",
+  "dynamic_letters": [
+    "H",
+    "J"
+  ],
+  "dynamic_output_labels": [
+    "H",
+    "J",
+    "OTHER"
+  ]
+}

@@ -1,0 +1,14 @@
+# BSL Sign Language Gloves — Backend Dependencies
+# Phase 1: Core scaffolding + ML inference
+fastapi>=0.115.0
+uvicorn[standard]>=0.32.0
+python-multipart>=0.0.18
+aiofiles>=24.1.0
+numpy>=2.0.0
+torch>=2.4.0
+xgboost>=2.1.0
+scikit-learn>=1.5.0
+scipy>=1.14.0
+# Phase 4: TTS
+pyttsx3>=2.90
+gTTS>=2.5.0

@@ -1,0 +1,198 @@
+{
+  "dataset": {
+    "train_samples": 80352,
+    "val_samples": 1458,
+    "test_samples": 1458,
+    "n_features": 26,
+    "n_classes": 27,
+    "n_train_classes": 27,
+    "missing_train_labels": [],
+    "unknown_eval_label": -1,
+    "unknown_val_samples": 0,
+    "unknown_test_samples": 0
+  },
+  "label_map": {
+    "0": 0,
+    "1": 1,
+    "2": 2,
+    "3": 3,
+    "4": 4,
+    "5": 5,
+    "6": 6,
+    "8": 7,
+    "10": 8,
+    "11": 9,
+    "12": 10,
+    "13": 11,
+    "14": 12,
+    "15": 13,
+    "16": 14,
+    "17": 15,
+    "18": 16,
+    "19": 17,
+    "20": 18,
+    "21": 19,
+    "22": 20,
+    "23": 21,
+    "24": 22,
+    "25": 23,
+    "26": 24,
+    "27": 25,
+    "28": 26
+  },
+  "inv_label_map": {
+    "0": 0,
+    "1": 1,
+    "2": 2,
+    "3": 3,
+    "4": 4,
+    "5": 5,
+    "6": 6,
+    "7": 8,
+    "8": 10,
+    "9": 11,
+    "10": 12,
+    "11": 13,
+    "12": 14,
+    "13": 15,
+    "14": 16,
+    "15": 17,
+    "16": 18,
+    "17": 19,
+    "18": 20,
+    "19": 21,
+    "20": 22,
+    "21": 23,
+    "22": 24,
+    "23": 25,
+    "24": 26,
+    "25": 27,
+    "26": 28
+  },
+  "label_names": {
+    "0": "A",
+    "1": "B",
+    "2": "C",
+    "3": "D",
+    "4": "E",
+    "5": "F",
+    "6": "G",
+    "8": "I",
+    "10": "K",
+    "11": "L",
+    "12": "M",
+    "13": "N",
+    "14": "O",
+    "15": "P",
+    "16": "Q",
+    "17": "R",
+    "18": "S",
+    "19": "T",
+    "20": "U",
+    "21": "V",
+    "22": "W",
+    "23": "X",
+    "24": "Y",
+    "25": "Z",
+    "26": "REST_1",
+    "27": "REST_2",
+    "28": "REST_3"
+  },
+  "models": {
+    "xgb": {
+      "training": {
+        "best_cv_score": 0.9987388909224387,
+        "best_params": {
+          "colsample_bytree": 0.7,
+          "learning_rate": 0.1,
+          "max_depth": 4,
+          "min_child_weight": 5,
+          "n_estimators": 400,
+          "reg_alpha": 0.5,
+          "reg_lambda": 3.0,
+          "subsample": 0.7
+        },
+        "training_time_s": 211.9
+      },
+      "val": {
+        "accuracy": 1.0,
+        "f1_weighted": 1.0
+      },
+      "test": {
+        "accuracy": 1.0,
+        "f1_weighted": 1.0
+      },
+      "model_path": "C:\\laragon\\www\\sign_gloves_ML_models\\data\\models\\full_user_validation\\xgb.pkl",
+      "weighted": false
+    },
+    "rf": {
+      "training": {
+        "best_cv_score": 0.9967690650008165,
+        "best_params": {
+          "max_depth": 12,
+          "max_features": "sqrt",
+          "min_samples_leaf": 3,
+          "min_samples_split": 5,
+          "n_estimators": 500
+        },
+        "training_time_s": 373.3
+      },
+      "val": {
+        "accuracy": 0.9993,
+        "f1_weighted": 0.9993
+      },
+      "test": {
+        "accuracy": 1.0,
+        "f1_weighted": 1.0
+      },
+      "model_path": "C:\\laragon\\www\\sign_gloves_ML_models\\data\\models\\full_user_validation\\rf.pkl",
+      "weighted": false
+    },
+    "svm": {
+      "training": {
+        "best_cv_score": 0.9983804288868805,
+        "best_params": {
+          "C": 10.0,
+          "gamma": "scale",
+          "kernel": "rbf"
+        },
+        "training_time_s": 228.1
+      },
+      "val": {
+        "accuracy": 0.9877,
+        "f1_weighted": 0.9873
+      },
+      "test": {
+        "accuracy": 0.9952,
+        "f1_weighted": 0.9952
+      },
+      "model_path": "C:\\laragon\\www\\sign_gloves_ML_models\\data\\models\\full_user_validation\\svm.pkl",
+      "weighted": false
+    },
+    "mlp": {
+      "training": {
+        "training_time_s": 8.2,
+        "hidden": [
+          64,
+          32
+        ],
+        "activation": "relu",
+        "calibration": "sigmoid (prefit on val)",
+        "n_iter": 39
+      },
+      "val": {
+        "accuracy": 0.9945,
+        "f1_weighted": 0.9945
+      },
+      "test": {
+        "accuracy": 0.9931,
+        "f1_weighted": 0.9931
+      },
+      "model_path": "C:\\laragon\\www\\sign_gloves_ML_models\\data\\models\\full_user_validation\\mlp.pkl",
+      "weighted": true
+    }
+  },
+  "best_model": "xgb",
+  "best_val_accuracy": 1.0,
+  "data_source": "real"
+}

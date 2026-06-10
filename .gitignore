@@ -1,0 +1,5 @@
+/data/processed/*
+/data/raw/synthetic/*
+/data/runtime/*
+data/models/rf_static_v2.pkl
+*.pkl

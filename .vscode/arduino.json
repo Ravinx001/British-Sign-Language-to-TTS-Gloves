@@ -1,0 +1,5 @@
+{
+  "board": "esp32:esp32:esp32",
+  "sketch": "arduino/glove_wifi_collect",
+  "port": "COM11"
+}

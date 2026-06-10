@@ -1,0 +1,63 @@
+{
+  "model": "CNN-LSTM (PyTorch)",
+  "device": "cpu",
+  "n_params": 219587,
+  "n_classes": 3,
+  "class_names": [
+    "H",
+    "J",
+    "OTHER"
+  ],
+  "epochs_trained": 29,
+  "max_epochs": 100,
+  "training_time_s": 29.9,
+  "best_val_loss": 0.0961,
+  "best_val_acc": 0.9697,
+  "test_accuracy": 1.0,
+  "test_loss": 0.0204,
+  "confusion_matrix": [
+    [
+      3,
+      0,
+      0
+    ],
+    [
+      0,
+      3,
+      0
+    ],
+    [
+      0,
+      0,
+      27
+    ]
+  ],
+  "per_class": {
+    "H": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "support": 3
+    },
+    "J": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "support": 3
+    },
+    "OTHER": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "support": 27
+    }
+  },
+  "dataset": {
+    "train": 1788,
+    "val": 33,
+    "test": 33,
+    "seq_len": 125,
+    "n_features": 26
+  },
+  "meets_88_target": true
+}
