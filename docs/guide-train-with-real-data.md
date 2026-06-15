@@ -614,7 +614,7 @@ flowchart LR
 | Static classifier accuracy (26 letters) | 97.4%             | **≥ 95%**       |
 | Per-letter precision                   | ≥ 88.3%           | **≥ 85%**       |
 | Confused pairs (>10% confusion)        | 0 pairs           | **≤ 3 pairs**   |
-| Dynamic classifier accuracy (J, Z)     | 100%              | **≥ 90%**       |
+| Dynamic classifier accuracy (H, J)     | 100%              | **≥ 90%**       |
 | End-to-end latency per letter           | —                 | **< 200ms**     |
 | Unknown rejection false positives       | —                 | **< 5%**        |
 

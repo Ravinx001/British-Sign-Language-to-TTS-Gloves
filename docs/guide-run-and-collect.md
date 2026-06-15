@@ -160,7 +160,7 @@ The default goal is **50 sessions per sign**. Tile colors:
 
 Adjust the goal slider if you want a different target.
 
-### Dynamic signs (J, Z)
+### Dynamic signs (H, J)
 
 Marked with ★. These need **motion** during the 2-second window — sign the actual letter motion, don't hold a static pose.
 
@@ -209,7 +209,7 @@ Practical sequence to build a good dataset:
 3. Pick letter **A**. Record 5 sessions back-to-back without removing the gloves.
 4. Click **A** in the progress grid → review the 5 sessions table → preview each one to spot-check signal quality. Trim or delete obvious junk.
 5. Repeat for B, C, D, ... Z.
-6. Once you have ~30 sessions per static sign and ~40 per dynamic sign (J, Z), you're ready to retrain.
+6. Once you have ~30 sessions per static sign and ~40 per dynamic sign (H, J), you're ready to retrain.
 7. Have a second person create their own user and repeat — diverse recorders make the model generalize better.
 
 ### Per-session quality heuristics
@@ -217,7 +217,7 @@ Practical sequence to build a good dataset:
 In the preview sparkline, a healthy 2 s session looks like:
 - A clear "settle" plateau in the middle with low jitter.
 - For static signs: flat lines for ~80% of the duration.
-- For dynamic signs (J/Z): a clear motion arc, then a settle.
+- For dynamic signs (H/J): a clear motion arc, then a settle.
 
 If the lines are flatlined at the same value for the entire window, the glove probably wasn't streaming — check the diagnostics modal and re-record.
 
@@ -231,7 +231,7 @@ After you've collected enough data, the existing trainers in `ml/` work without 
 cd c:\laragon\www\sign_gloves_ML_models
 .venv\Scripts\Activate.ps1
 python -m ml.train_static    # XGBoost / RF / SVM for 24 static letters
-python -m ml.train_dynamic   # CNN-LSTM for J, Z
+python -m ml.train_dynamic   # CNN-LSTM for H, J
 ```
 
 Restart the backend after training so the new model files are loaded:

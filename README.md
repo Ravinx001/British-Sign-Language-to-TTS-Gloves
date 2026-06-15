@@ -19,7 +19,7 @@
 
 ---
 
-> ℹ️ **About this document.** This README describes the **system as originally designed and planned** — the intended, fully-healthy hardware and the clean ML pipeline **before** any damaged sensors were masked/rewired and **before** per-feature reliability weighting was introduced to recover live accuracy. In this baseline, **all 26 features are active and trusted equally**, the dynamic letters are **J and Z**, and the pipeline is **synthetic-data-first** with a planned real-data fine-tuning phase. Sources: `docs/ML-dev-plan.md`, `docs/plan-bslSignLanguageGloves.md`, `docs/sensor-guide.md`, `docs/ml_evaluation_report.md`, and the `docs/new-docs/` build/train guides.
+> ℹ️ **About this document.** This README describes the **system as originally designed and planned** — the intended, fully-healthy hardware and the clean ML pipeline **before** any damaged sensors were masked/rewired and **before** per-feature reliability weighting was introduced to recover live accuracy. In this baseline, **all 26 features are active and trusted equally**, the dynamic letters are **H and J**, and the pipeline is **synthetic-data-first** with a planned real-data fine-tuning phase. Sources: `docs/ML-dev-plan.md`, `docs/plan-bslSignLanguageGloves.md`, `docs/sensor-guide.md`, `docs/ml_evaluation_report.md`, and the `docs/new-docs/` build/train guides.
 
 ---
 
@@ -58,7 +58,7 @@
 Two **ESP32-powered gloves** — one for each hand — stream synchronized sensor packets (finger bend, fingertip pressure, and hand orientation) over Wi-Fi at **50 Hz** to a **FastAPI backend**. The backend aligns the left and right hand frames by timestamp, engineers a **26-dimensional feature vector**, and routes the stream through a **two-stage machine-learning recognizer**:
 
 - a **static classifier** (XGBoost, with Random Forest and SVM baselines) for the **24 still-pose letters**, and
-- a **dynamic CNN-LSTM** for the **two motion letters J and Z** (plus a set of distractor gesture classes that teach the model to ignore everyday movement).
+- a **dynamic CNN-LSTM** for the **two motion letters H and J** (plus a set of distractor gesture classes that teach the model to ignore everyday movement).
 
 Recognized letters are debounced, displayed on a **React dashboard**, and accumulated into words and sentences.
 
@@ -85,7 +85,7 @@ Two ESP32 boards each read **5 flex sensors**, **3 force-sensitive resistors (FS
 A gravity-compensated **motion-energy** detector decides per frame whether the hand is still or moving. Still poses go to the fast static classifier; detected motion is buffered into a 2-second window and sent to the dynamic CNN-LSTM.
 
 ### 🧠 **Three Static Models + One Dynamic Model**
-XGBoost, Random Forest, and SVM compete via GridSearchCV; the best (XGBoost) is deployed. A CNN-LSTM handles the temporal **J/Z** gestures.
+XGBoost, Random Forest, and SVM compete via GridSearchCV; the best (XGBoost) is deployed. A CNN-LSTM handles the temporal **H/J** gestures.
 
 ### 📐 **Clean 26-Feature Space — All Channels Trusted Equally**
 Every flex, FSR, orientation, and derived feature is **active and weighted equally** — there is no masking and no per-channel reliability weighting. The full sensor array is assumed healthy.
@@ -122,7 +122,7 @@ flowchart LR
         FE --> CAL["🎯 Per-user Calibration"]
         CAL --> PRED["🧠 Prediction Service<br/>motion routing + rolling buffer"]
         PRED --> STATIC["🌲 XGBoost<br/>24 static letters"]
-        PRED --> DYN["🔁 CNN-LSTM<br/>J / Z + distractors"]
+        PRED --> DYN["🔁 CNN-LSTM<br/>H / J + distractors"]
         STATIC --> OUT["📦 Prediction + confidence"]
         DYN --> OUT
         OUT --> DB[("🗃️ SQLite<br/>readings, samples, predictions")]
@@ -312,7 +312,7 @@ flowchart TD
 
     ME -->|"Moving (3+ frames)"| BUF[🪟 Buffer 100 frames]
     BUF --> SCALE2[📊 StandardScaler]
-    SCALE2 --> DYNM[🔂 CNN-LSTM<br/>J / Z + distractors]
+    SCALE2 --> DYNM[🔂 CNN-LSTM<br/>H / J + distractors]
     DYNM --> DYTH{conf ≥ 0.60?}
 
     STH -->|Yes| DEB[🪧 debounce 3 frames]
@@ -328,11 +328,11 @@ flowchart TD
 
 | Route | Labels |
 |-------|--------|
-| **Static** (XGBoost) | A, B, C, D, E, F, G, H, I, K, L, M, N, O, P, Q, R, S, T, U, V, W, X, Y (**24 letters**) |
-| **Dynamic** (CNN-LSTM) | **J**, **Z** + 5 distractor classes (wave horizontal, wave vertical, scratch, adjust glove, random gesture) |
+| **Static** (XGBoost) | A, B, C, D, E, F, G, I, K, L, M, N, O, P, Q, R, S, T, U, V, W, X, Y, Z (**24 letters**) |
+| **Dynamic** (CNN-LSTM) | **H**, **J** + 5 distractor classes (wave horizontal, wave vertical, scratch, adjust glove, random gesture) |
 
-- **J and Z are the motion letters** in BSL fingerspelling — J adds a downward hook to the "I" pose; Z traces a Z in the air. Both require temporal context, so they go to the CNN-LSTM.
-- The **distractor classes** teach the dynamic model to ignore everyday movement (so a wave or a glove adjustment isn't forced into J or Z). They are dropped once real dynamic signs are added.
+- **H and J are the motion letters** in this BSL fingerspelling dataset. Both require temporal context, so they go to the CNN-LSTM; Z is handled by the static model.
+- The **distractor classes** teach the dynamic model to ignore everyday movement (so a wave or a glove adjustment isn't forced into H or J). They are dropped once real dynamic signs are added.
 - An **Unknown** result is emitted whenever the top softmax confidence is below threshold — there are no explicit "rest" classes in this design.
 
 ---
@@ -379,7 +379,7 @@ A **single `StandardScaler`** is fitted once during data generation and reused e
 
 ### 🔂 Dynamic model — CNN-LSTM
 
-J and Z are *movements*, not poses, so a single frame can't classify them. A **CNN-LSTM** consumes a **100-frame × 26-feature** window (2 s at 50 Hz):
+H and J are *movements*, not poses, so a single frame can't classify them. A **CNN-LSTM** consumes a **100-frame × 26-feature** window (2 s at 50 Hz):
 
 ```text
 Input (100, 26)
@@ -391,10 +391,10 @@ Input (100, 26)
   → Dense(n_classes, softmax)
 ```
 
-- **Why CNN-LSTM?** Conv1D layers extract local temporal motion primitives; LSTM layers model the full-gesture sequence — ideal for J's hook and Z's zig-zag.
+- **Why CNN-LSTM?** Conv1D layers extract local temporal motion primitives; LSTM layers model the full-gesture sequence — ideal for the H and J motion patterns.
 - **Planned framework:** TensorFlow/Keras (`.h5`), with TFLite export for potential on-device inference. *(On Python 3.14 environments where TensorFlow is unavailable, the model is implemented equivalently in PyTorch.)*
 - **Training:** Adam (lr 0.001), categorical cross-entropy, early stopping (patience 10), `ReduceLROnPlateau` (factor 0.5, patience 5), batch size 32, up to 100 epochs.
-- **2-class overfit guard:** training on only J + Z risks overfitting, so 5 distractor gesture classes are added to force meaningful temporal discrimination.
+- **2-class overfit guard:** training on only H + J risks overfitting, so 5 distractor gesture classes are added to force meaningful temporal discrimination.
 
 ### 🛡️ Motion segmentation, rejection & debouncing
 
@@ -433,7 +433,7 @@ flowchart LR
 | Virtual users | 10 (±10% baseline offset, no leakage) |
 | Split | 70% train / 15% val / 15% test |
 
-Real data is then blended in (initially 50/50, shifting toward 80% real / 20% synthetic as captures grow), and the static model is retrained while the CNN-LSTM's Conv layers can be frozen and its LSTM/Dense layers fine-tuned on real J/Z motion.
+Real data is then blended in (initially 50/50, shifting toward 80% real / 20% synthetic as captures grow), and the static model is retrained while the CNN-LSTM's Conv layers can be frozen and its LSTM/Dense layers fine-tuned on real H/J motion.
 
 ---
 
@@ -457,7 +457,7 @@ From the Phase-1 synthetic evaluation (`docs/ml_evaluation_report.md`):
 | Static accuracy (26 letters) | ≥ 92% | **97.4%** (XGBoost) |
 | Per-letter precision | ≥ 80% all | **88.3%+ all** |
 | Confused pairs (>10%) | ≤ 5 | **0** |
-| Dynamic accuracy (J, Z) | ≥ 88% | **100%** (synthetic) |
+| Dynamic accuracy (H, J) | ≥ 88% | **100%** (synthetic) |
 | Feature-group ablation | ≥ 70% each | **86.6%+ all groups** |
 | 2× noise robustness | ≥ 85% | **87.8%** |
 | End-to-end ("HELLO", "BSL", "JAZZ") | correct | **all correct** |
@@ -552,7 +552,7 @@ python -m ml.synthetic_data
 
 # 2. Train models
 python -m ml.train_static          # XGBoost + RF + SVM (GridSearchCV)
-python -m ml.train_dynamic         # CNN-LSTM (J/Z + distractors)
+python -m ml.train_dynamic         # CNN-LSTM (H/J + distractors)
 
 # 3. Evaluate
 python -m ml.evaluate              # metrics, SHAP, confusion matrix
@@ -602,7 +602,7 @@ python -m ml.train_dynamic --epochs 50
 
 1. Record 30–50 real samples per letter (web Training page) into the `training_samples` table.
 2. Blend real + synthetic and retrain XGBoost from scratch.
-3. Freeze the CNN-LSTM Conv layers and fine-tune LSTM/Dense on real J/Z sequences.
+3. Freeze the CNN-LSTM Conv layers and fine-tune LSTM/Dense on real H/J sequences.
 4. Refit the `StandardScaler` on real data and re-evaluate with 5-fold CV.
 
 ---
@@ -623,7 +623,7 @@ All ML constants live in `ml/config.py`.
 | Debounce frames | 3 | Consecutive identical predictions (~60 ms) |
 | Motion energy threshold | 2.5 m/s² | Static ↔ dynamic routing (gravity-compensated) |
 | Motion offset | 25 frames | 500 ms below threshold ends a segment |
-| Dynamic letters | J, Z | Motion letters routed to CNN-LSTM |
+| Dynamic letters | H, J | Motion letters routed to CNN-LSTM |
 | CV folds / scoring | 5 / f1_weighted | Static GridSearch settings |
 | Samples per sign | 5,000 | Synthetic generation |
 
@@ -656,7 +656,7 @@ sign_gloves/
 │   ├── feature_engineering.py        # raw frame → 26-D vector
 │   ├── synthetic_data.py             # synthetic generation + augmentation
 │   ├── train_static.py               # XGBoost / RF / SVM + GridSearchCV
-│   ├── train_dynamic.py              # CNN-LSTM (J/Z + distractors)
+│   ├── train_dynamic.py              # CNN-LSTM (H/J + distractors)
 │   ├── segmentation.py               # gravity-compensated motion detection
 │   ├── predict.py                    # unified two-stage prediction
 │   ├── evaluate.py                   # metrics, SHAP, confusion matrices
@@ -689,7 +689,7 @@ sign_gloves/
 | Static fingerspelling accuracy | ≥ 89–92% | ≥ 95% |
 | Per-letter precision | ≥ 80% every letter | ≥ 80% |
 | Confused pairs (>10%) | ≤ 5 | ≤ 3 |
-| Dynamic accuracy (J, Z) | ≥ 88% | ≥ 90% |
+| Dynamic accuracy (H, J) | ≥ 88% | ≥ 90% |
 | Motion segmentation IoU | > 0.75 | > 0.80 |
 | Static inference latency | < 1 ms/frame | — |
 | End-to-end recognition latency | < 200 ms/letter | — |
@@ -716,7 +716,7 @@ sign_gloves/
 
 - 🧪 **Synthetic-first.** Headline accuracy is on synthetic data; real noise, drift, and cross-talk are not yet captured.
 - 🔡 **I vs O** is the primary residual confusion, since there is no FSR on the left middle/ring fingertip.
-- 🤸 **Only two dynamic letters (J, Z)**; the 5 distractor classes are heuristic stand-ins for real non-sign motion.
+- 🤸 **Only two dynamic letters (H, J)**; the 5 distractor classes are heuristic stand-ins for real non-sign motion.
 - 🧤 **Both gloves required** — BSL fingerspelling is two-handed; single-hand input is out of scope.
 - 📍 **No body-location tracking** — BSL signs at specific body locations (forehead, chin, chest) need extra sensors and are out of scope for the glove-only proof of concept.
 - 🔋 **Battery/wireless** operation is optional in dev (USB-powered); battery profiling is a Phase-5 task.

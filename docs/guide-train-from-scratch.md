@@ -54,7 +54,7 @@
 
 ## Architecture Overview
 
-The ML pipeline uses a **two-stage classification** system: one for static signs (24 letters) and one for dynamic signs (J, Z + distractors).
+The ML pipeline uses a **two-stage classification** system: one for static signs (24 letters) and one for dynamic signs (H, J + distractors).
 
 ```mermaid
 flowchart TD
@@ -92,7 +92,7 @@ flowchart LR
     Input["Sensor Frame<br/>50 Hz, 26 features"] --> ME{"Motion Energy<br/>≤ 2.5 m/s²?"}
     ME -- "Yes (static)" --> XGB["XGBoost<br/>24 static letters<br/>confidence ≥ 0.85"]
     ME -- "No (moving)<br/>3+ frames" --> Buffer["Buffer 100 frames<br/>(2 seconds)"]
-    Buffer --> LSTM["CNN-LSTM<br/>J, Z + distractors<br/>confidence ≥ 0.60"]
+    Buffer --> LSTM["CNN-LSTM<br/>H, J + distractors<br/>confidence ≥ 0.60"]
     XGB --> Debounce["Debounce<br/>3 consecutive<br/>identical predictions"]
     LSTM --> Debounce
     Debounce --> Output["Predicted Sign<br/>+ Confidence Score"]
@@ -194,7 +194,7 @@ python -c "import numpy, scipy, sklearn, xgboost, torch, matplotlib, seaborn, sh
 
 ## Step 3 — Generate Synthetic Data
 
-This step creates 130,000 static samples (5,000 per letter × 26) and dynamic sequences for J, Z, plus 5 distractor gesture classes.
+This step creates 130,000 static samples (5,000 per letter × 26) and dynamic sequences for H, J, plus 5 distractor gesture classes.
 
 ```bash
 python -m ml.synthetic_data
@@ -206,7 +206,7 @@ python -m ml.synthetic_data
 flowchart TD
     BSL["BSL Sign Definitions<br/>(26 letters × 26 features)"] --> VU["Create 10 Virtual Users<br/>(calibration offsets)"]
     VU --> Static["Generate Static Samples<br/>5,000 × 26 = 130,000"]
-    VU --> Dynamic["Generate Dynamic Sequences<br/>J, Z + 5 distractors"]
+    VU --> Dynamic["Generate Dynamic Sequences<br/>H, J + 5 distractors"]
 
     Static --> Aug["Apply Augmentation<br/>• Gaussian noise (σ=3%)<br/>• Amplitude scaling (±8%)<br/>• Orientation jitter (±15°)<br/>• Sensor dropout (5%)<br/>• Correlated finger noise"]
 
@@ -315,7 +315,7 @@ python -m ml.train_static
 
 ## Step 5 — Train Dynamic Classifier
 
-Train the CNN-LSTM model for dynamic gesture recognition (J, Z + 5 distractor gestures).
+Train the CNN-LSTM model for dynamic gesture recognition (H, J + 5 distractor gestures).
 
 ```bash
 python -m ml.train_dynamic
@@ -339,7 +339,7 @@ flowchart TD
     LSTM1 --> LSTM2["LSTM(64)<br/>last timestep only<br/>+ Dropout(0.3)"]
     LSTM2 --> Dense1["Dense(64, ReLU)<br/>+ Dropout(0.2)"]
     Dense1 --> Dense2["Dense(n_classes)<br/>CrossEntropyLoss"]
-    Dense2 --> Output["7 classes:<br/>J, Z + 5 distractors"]
+    Dense2 --> Output["7 classes:<br/>H, J + 5 distractors"]
 
     style Input fill:#e3f2fd
     style Output fill:#c8e6c9
@@ -371,7 +371,7 @@ flowchart TD
 | Test Accuracy   | ≥ 88%   | ~100%                |
 | Convergence     | —       | ~10–33 epochs         |
 
-> **Note:** 100% accuracy on synthetic dynamic data is expected and normal — the J/Z motion trajectories are quite distinct. Real data will require retraining.
+> **Note:** 100% accuracy on synthetic dynamic data is expected and normal — the H/J motion trajectories are quite distinct. Real data will require retraining.
 
 ---
 

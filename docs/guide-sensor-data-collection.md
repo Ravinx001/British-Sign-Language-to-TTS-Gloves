@@ -372,7 +372,7 @@ flowchart TD
     Repeat -- "No" --> Prompt
     Repeat -- "Yes" --> NextSign{"All letters<br/>done?"}
     NextSign -- "No" --> Sign
-    NextSign -- "Yes" --> Dynamic["4. Record dynamic signs<br/>(J, Z gestures × n reps)"]
+    NextSign -- "Yes" --> Dynamic["4. Record dynamic signs<br/>(H, J gestures × n reps)"]
     Dynamic --> QC["5. Quality Check<br/>(range validation,<br/>sample count verification)"]
     QC --> Save["6. Save Session Data"]
 
@@ -415,7 +415,7 @@ flowchart TD
 
 **Recommended:** Prompted approach with a countdown timer. The backend sends a WebSocket message with the target letter, records for 2 seconds, then moves to the next.
 
-### Dynamic Sign Recording (J, Z)
+### Dynamic Sign Recording (H, J)
 
 For dynamic signs, the recording window is longer:
 
@@ -424,7 +424,7 @@ For dynamic signs, the recording window is longer:
 | Window length        | 100 frames (2 seconds at 50 Hz)   |
 | Motion pattern       | Full gesture trajectory            |
 | Pre-gesture rest     | 0.5 seconds (25 frames of stillness) |
-| Target gestures      | J (downward sweep), Z (zigzag)    |
+| Target gestures      | H and J motion patterns           |
 | Distractors to record| Wave, scratch, adjust glove        |
 
 ---
@@ -615,7 +615,7 @@ sequenceDiagram
     end
 
     Note over U,FS: Dynamic Signs Phase
-    loop For J, Z × n repetitions
+    loop For H, J × n repetitions
         UI->>U: "Perform J gesture"
         ESP->>BE: Stream 100 frames (2s)
         BE->>FS: Append dynamic frames
